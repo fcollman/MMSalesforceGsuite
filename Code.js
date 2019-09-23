@@ -105,7 +105,7 @@ function listAllUsers() {
 }
 
 
-function listUsers() {
+function syncGoogleWithSalesforce() {
   var dry_run = false;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
   var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
