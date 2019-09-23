@@ -111,7 +111,7 @@ function listUsers() {
   var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
   var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
   var volunteer_group = GroupsApp.getGroupByEmail("volunteers@" + domainname);
-  var ec_group = GroupsApp.getGroupByEmail("ec"+domainname);
+  var ec_group = GroupsApp.getGroupByEmail("ec@"+domainname);
   var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
   var active_group = GroupsApp.getGroupByEmail("active@"+domainname);
 
@@ -293,7 +293,10 @@ function auditActive() {
   
   var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
   var sheet = ss.getSheetByName(salesforceSheetName);
-  
+
+  var userSuspensionSheetID = PropertiesService.getScriptProperties().getProperty('userSuspensionSheetID');
+  var suspendedSpreadSheet = SpreadsheetApp.openById(userSuspensionSheetID);
+  var suspendedSheet = suspendedSpreadSheet.getSheetByName("SuspendedUsers");
   var rangeData = sheet.getDataRange();
   var lastColumn = rangeData.getLastColumn();
   var rangeValues = rangeData.getValues();
@@ -319,14 +322,17 @@ function auditActive() {
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
   }
-
+  suspendedSheet.deleteRows(2, suspendedSheet.getMaxRows()-1)
   for (i = 1; i < all_users.length; i++) {
     user = all_users[i];
-    if (admin_accounts.indexOf(user.primaryEmail) == -1) {
-      if (!isUserbyName(user, rangeValues, firstNameCol, lastNameCol)) {
-        //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
-        if (!isUserByEmail(user, rangeValues, emailCol)) {
-          Logger.log("User not found by name or email in active salesforce: " + user.name.fullName);
+    if (!user.suspended){
+      if (admin_accounts.indexOf(user.primaryEmail) == -1) {
+        if (!isUserbyName(user, rangeValues, firstNameCol, lastNameCol)) {
+          //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
+          if (!isUserByEmail(user, rangeValues, emailCol)) {
+            suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
+            Logger.log("User not found by name or email in active salesforce: " + user.name.fullName);
+          }
         }
       }
     }
