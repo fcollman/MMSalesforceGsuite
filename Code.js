@@ -338,3 +338,20 @@ function auditActive() {
     }
   }
 }
+
+// function for suspending the accounts in the suspendedUsers spreadsheet
+function suspendUsers() {
+  var userSuspensionSheetID = PropertiesService.getScriptProperties().getProperty('userSuspensionSheetID');
+  var suspendedSpreadSheet = SpreadsheetApp.openById(userSuspensionSheetID);
+  var suspendedSheet = suspendedSpreadSheet.getSheetByName("SuspendedUsers");
+
+  var rangeData = suspendedSheet.getDataRange();
+  var lastRow = rangeData.getLastRow();
+  var rangeValues = rangeData.getValues();
+  for (i = 1; i < lastRow - 1; i++) {
+    user_email = rangeValues[i][1]
+    var user = AdminDirectory.Users.get(email);
+    user.suspended = true;
+    AdminDirectory.Users.update(user);
+  }
+}
