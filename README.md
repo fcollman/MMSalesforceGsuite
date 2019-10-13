@@ -93,22 +93,35 @@ Note the ID of spreadsheet (newUserSheetID)
 TODO: Make the generation of this spreadsheet automated
 
 11. Create a “UserSuspension” spreadsheet owned by admin (note ID “userSuspensionSheetID”)
-Add a “SuspendedUsers” tab to spreadsheet.
-Add “Name” and “Email” columns 
-TODO: maybe make this spreadsheet follow the bulk user update format. To allow easier semi-automated user suspension.
-Todo: make the creation of this spreadsheet a function you can run
+
+    Add a “SuspendedUsers” tab to spreadsheet.
+
+    Add “Name” and “Email” columns 
+
+    TODO: maybe make this spreadsheet follow the bulk user update format. To allow easier semi-automated user suspension.
+
+    TODO: make the creation of this spreadsheet a function you can run
 
 
 12. Install the script in your google code repo from development machine
-Clone the repository https://github.com/fcollman/MMSalesforceGsuite
-Install clasp on dev machine https://github.com/google/clasp
-Enable api usage on admin https://script.google.com/home/usersettings
-Cd to MMSalesforceGsuite
-clasp login
-Use admin credentials
-clasp create --title "SalesforceSync"
-clasp push
-Pushes current directory to script.google.com
+
+    Clone the repository https://github.com/fcollman/MMSalesforceGsuite
+   
+    Install clasp on dev machine https://github.com/google/clasp
+  
+    Enable api usage on admin https://script.google.com/home/usersettings
+   
+    Cd to MMSalesforceGsuite
+   
+    clasp login
+   
+    Use admin credentials
+  
+    clasp create --title "SalesforceSync"
+  
+    clasp push
+  
+    Pushes current directory to script.google.com
 
 13. Setup variables at script.google.com
 Open project on web browser
@@ -124,11 +137,11 @@ TODO: make the spreadsheet creation and variable setting automated.
 
 
 14. Do a dry run of user creation.
-Edit dry_run = false, to dry_run = true (~line 109) in script.
-Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
-Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
-view> logs to see what would have happened.
-If satisfied, edit dry_run=true, and rerun.  Accounts should be created, and some group memberships.
+    Edit dry_run = false, to dry_run = true (~line 109) in script.
+    Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
+    Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
+    view> logs to see what would have happened.
+    If satisfied, edit dry_run=true, and rerun.  Accounts should be created, and some group memberships.
 
 TODO: not all groups have users automatically added to yet.  
 
@@ -174,4 +187,6 @@ Write a draft email template in the admin account gmail page introducing new use
 
 ```
 18. Install a mail merge add-on on your “User Creation” spreadsheet.  We use “Yet another Mail Merge”.  Run the add-on to email users.  Free version limited to emailing 50 people per day, $40/year to make it more than that. 
-Prepare to deal with questions about logins and people losing login email or not receiving it due to types in email address, or not understanding how to add a gsuite account to their google login if they are using gmail for personal use. One helpful tip is that the admin console allows you to download a list of users and when they have last logged in.  We used this to setup a separate mail merge spreadsheet which emailed users at their personal logins if they hadn’t yet logged in.  I set this up by doing a merge between the login spreadsheet and the user creation spreadsheet in python. Todo: make this capability easier to do.  We also used this to manually approach and assist volunteers and students who were not yet using the system.  We did have to utilize people’s personal emails for the first session as well because we did not have confidence that everyone was using and checking their new minds matter accounts.
+Prepare to deal with questions about logins and people losing login email or not receiving it due to types in email address, or not understanding how to add a gsuite account to their google login if they are using gmail for personal use. One helpful tip is that the admin console allows you to download a list of users and when they have last logged in.  We used this to setup a separate mail merge spreadsheet which emailed users at their personal logins if they hadn’t yet logged in.  I set this up by doing a merge between the login spreadsheet and the user creation spreadsheet in python. 
+
+    TODO: make this capability easier to do.  We also used this to manually approach and assist volunteers and students who were not yet using the system.  We did have to utilize people’s personal emails for the first session as well because we did not have confidence that everyone was using and checking their new minds matter accounts.
