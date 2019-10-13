@@ -24,7 +24,7 @@ https://support.google.com/a/answer/60218?hl=en
 
 2. create these google groups owned by admin@ with groups.google.com
 
-
+```
     volunteers@ (for all volunteers)
     ec@ (for members of executive council)
     board@ (for members of board)
@@ -35,7 +35,7 @@ https://support.google.com/a/answer/60218?hl=en
     active@ (all active volunteers)
     senior-enrichment-instructors@ (for senior enrichment instructors)
     +any other groups you want to manage permissions based on, or want to email collectively)
-
+```
 
 3. Setup a salesforce report that includes all the volunteers and students you want to have accounts.  We set ours up as follows 
 
