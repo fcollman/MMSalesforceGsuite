@@ -14,7 +14,7 @@ function generateRandom() {
 
 function addUser(firstName, lastName, default_email, home_email, phone, dry_run) {
   var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
-  var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/"+ userID);
+  var ss = SpreadsheetApp.openById(userID);
   var sheet = ss.getSheets()[0]
   var pwd = "MM2019" + firstName + generateRandom();
 
@@ -350,8 +350,8 @@ function suspendUsers() {
   var rangeValues = rangeData.getValues();
   for (i = 1; i < lastRow - 1; i++) {
     user_email = rangeValues[i][1]
-    var user = AdminDirectory.Users.get(email);
+    var user = AdminDirectory.Users.get(user_email);
     user.suspended = true;
-    AdminDirectory.Users.update(user);
+    AdminDirectory.Users.update(user, user_email);
   }
 }
