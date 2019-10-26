@@ -114,6 +114,10 @@ function syncGoogleWithSalesforce() {
   var ec_group = GroupsApp.getGroupByEmail("ec@"+domainname);
   var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
   var active_group = GroupsApp.getGroupByEmail("active@"+domainname);
+  var math_instructors_group = GroupsApp.getGroupByEmail("math-instructors@"+domainname);
+  var wct_instructors_group = GroupsApp.getGroupByEmail("wct-instructors@"+domainname);
+  var testprep_instructors_group = GroupsApp.getGroupByEmail("testprep-instructors@"+domainname);
+  var senior_enrich_instructors_group = GroupsApp.getGroupByEmail("senior-enrichment-instructors@"+domainname);
 
   var student_groups = {}
   var student_year_inds = {}
@@ -121,10 +125,7 @@ function syncGoogleWithSalesforce() {
   var volunteer_inds = [];
   var ec_inds = [];
   var board_inds = [];
-  var math_inds = [];
-  var testprep_inds = [];
-  var writing_inds = [];
-  var enrich_inds = [];
+
 
   for (i = 2020; i <= 2022; i++) {
     student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
@@ -192,7 +193,6 @@ function syncGoogleWithSalesforce() {
       Utilities.sleep(1000)
     }
     if (data[i][leadershipCol].toString().indexOf('Chapter Board') != -1) {
-      board_inds.push(i);
       if (!isUser(email)) {
         addUser(data[i][firstNameCol],
           data[i][lastNameCol],
@@ -208,7 +208,6 @@ function syncGoogleWithSalesforce() {
       Utilities.sleep(1000)
     }
     if (data[i][leadershipCol].toString().indexOf('Chapter Executive Committee') != -1) {
-      ec_inds.push(i);
       if (!ec_group.hasUser(email)) {
         addGroupMember(email, ec_group.getEmail(), dry_run);
       }
@@ -240,20 +239,30 @@ function syncGoogleWithSalesforce() {
       }
     }
 
-    //  TODO: auto add math instrucgtors, WCT, test prep and senior enrichment
-    //  instructors to their appropriate groups
     if (data[i][rolenonleadCol]) {
       if (data[i][rolenonleadCol].toString().indexOf('Math') != -1) {
-        math_inds.push(i);
+        if (!math_instructors_group.hasUser(email)) {
+          addGroupMember(email, math_instructors_group.getEmail(), dry_run);
+        }
+        Utilities.sleep(1000)
       }
       if (data[i][rolenonleadCol].toString().indexOf('W&CT') != -1) {
-        writing_inds.push(i);
+        if (!wct_instructors_group.hasUser(email)) {
+          addGroupMember(email, wct_instructors_group.getEmail(), dry_run);
+        }
+        Utilities.sleep(1000)
       }
       if (data[i][rolenonleadCol].toString().indexOf('Test Prep') != -1) {
-        testprep_inds.push(i);
+        if (!testprep_instructors_group.hasUser(email)) {
+          addGroupMember(email, testprep_instructors_group.getEmail(), dry_run);
+        }
+        Utilities.sleep(1000)
       }
       if (data[i][rolenonleadCol].toString().indexOf('Senior') != -1) {
-        enrich_inds.push(i);
+        if (!senior_enrich_instructors_group.hasUser(email)) {
+          addGroupMember(email, senior_enrich_instructors_group.getEmail(), dry_run);
+        }
+        Utilities.sleep(1000)
       }
     }
 
@@ -322,7 +331,9 @@ function auditActive() {
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
   }
-  suspendedSheet.deleteRows(2, suspendedSheet.getMaxRows()-1)
+  if(suspendedSheet.getMaxRows()>1){   
+    suspendedSheet.deleteRows(2, suspendedSheet.getMaxRows()-1)
+  }
   for (i = 1; i < all_users.length; i++) {
     user = all_users[i];
     if (!user.suspended){
@@ -348,7 +359,7 @@ function suspendUsers() {
   var rangeData = suspendedSheet.getDataRange();
   var lastRow = rangeData.getLastRow();
   var rangeValues = rangeData.getValues();
-  for (i = 1; i < lastRow - 1; i++) {
+  for (i = 1; i < lastRow ; i++) {
     user_email = rangeValues[i][1]
     var user = AdminDirectory.Users.get(user_email);
     user.suspended = true;
