@@ -45,7 +45,7 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
   }
 
   //Logger.log('%s',user);
-  Logger.log('User created %s, %s, %s', user.primaryEmail, home_email, pwd);
+  console.log('User created %s, %s, %s', user.primaryEmail, home_email, pwd)
 
 }
 
@@ -60,7 +60,7 @@ function addGroupMember(userEmail, groupEmail, dry_run) {
       if (!dry_run) {
         member = AdminDirectory.Members.insert(member, groupEmail);
       }
-      Logger.log("User %s added as a member of group %s.", userEmail, groupEmail);
+      console.log("User %s added as a member of group %s.", userEmail, groupEmail);
     }
   }
   
@@ -97,7 +97,7 @@ function listAllUsers() {
         //Logger.log('%s (%s)', user.name.fullName, user.primaryEmail);
       }
     } else {
-      Logger.log('No users found.');
+      console.log('No users found.');
     }
     pageToken = page.nextPageToken;
   } while (pageToken);
@@ -120,19 +120,13 @@ function syncGoogleWithSalesforce() {
   var senior_enrich_instructors_group = GroupsApp.getGroupByEmail("senior-enrichment-instructors@"+domainname);
 
   var student_groups = {}
-  var student_year_inds = {}
-  var current_student_inds = []
-  var volunteer_inds = [];
-  var ec_inds = [];
-  var board_inds = [];
 
 
   for (i = 2020; i <= 2022; i++) {
     student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
-    student_year_inds[i] = [];
   }
 
-  Logger.log(ss.getName());
+  console.log(ss.getName());
   
   var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
   var sheet = ss.getSheetByName(salesforceSheetName);
@@ -164,8 +158,6 @@ function syncGoogleWithSalesforce() {
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
   }
 
-  Logger.log("CRT is " + volunteerTypeCol + ", Email is " + emailCol);
-  Logger.log("yearCol is " + yearCol);
   data = rangeData.getValues();
 
   // allCurrentUsers = listAllUsers();
@@ -177,7 +169,6 @@ function syncGoogleWithSalesforce() {
     email = email.replace(" ", ".");
 
     if (data[i][volunteerTypeCol] === 'Volunteer') {
-      volunteer_inds.push(i);
       if (!isUser(email)) {
         addUser(data[i][firstNameCol],
           data[i][lastNameCol],
@@ -215,8 +206,6 @@ function syncGoogleWithSalesforce() {
     }
 
     if (data[i][volunteerTypeCol] === 'Student') {
-      current_student_inds.push(i);
-      student_year_inds[data[i][yearCol]].push(i);
       if (data[i][yearCol] > 2019) {
         if (!isUser(email)) {
           addUser(data[i][firstNameCol],
@@ -342,7 +331,7 @@ function auditActive() {
           //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
           if (!isUserByEmail(user, rangeValues, emailCol)) {
             suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
-            Logger.log("User not found by name or email in active salesforce: " + user.name.fullName);
+            console.log({message: 'User Suspended', fullName: user.name.fullName, email:user.primaryEmail});
           }
         }
       }
