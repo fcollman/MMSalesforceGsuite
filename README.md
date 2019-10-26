@@ -145,9 +145,6 @@ TODO: make the spreadsheet creation and variable setting automated.
 TODO: not all groups have users automatically added to yet.  
 
     XXXXmentors@ (don’t know how to do this as mentors are not linked to years)
-    testprep-instructors@ (possible..based upon Role (Non-Leadership))
-    wct-instructors@ (possible..based upon Role (Non-Leadership))
-    senior-enrichment-instructors@  (possible..based upon Role (Non-Leadership))
     Fix missing group memberships, manually add appropriate volunteers to google classrooms if you are using this gsuite feature. Todo: make this automated and optional.
 
 
