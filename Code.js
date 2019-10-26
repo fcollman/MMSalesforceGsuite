@@ -120,10 +120,11 @@ function syncGoogleWithSalesforce() {
   var senior_enrich_instructors_group = GroupsApp.getGroupByEmail("senior-enrichment-instructors@"+domainname);
 
   var student_groups = {}
-
+  var mentor_groups = {}
 
   for (i = 2020; i <= 2022; i++) {
     student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
+    mentor_groups[i] = GroupsApp.getGroupByEmail(i+"mentors"+"@"+ domainname);
   }
 
   console.log(ss.getName());
@@ -145,7 +146,7 @@ function syncGoogleWithSalesforce() {
   var firstNameCol = -1;
   var lastNameCol = -1;
   var phoneCol = -1;
-
+  var studentYearAssociationCol = -1;
 
   for (i = 0; i < lastColumn; i++) {
     if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
@@ -156,6 +157,7 @@ function syncGoogleWithSalesforce() {
     else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
+    else if (rangeValues[0][i] === 'Student Year Association') studentYearAssociationCol = i;
   }
 
   data = rangeData.getValues();
@@ -251,6 +253,25 @@ function syncGoogleWithSalesforce() {
         if (!senior_enrich_instructors_group.hasUser(email)) {
           addGroupMember(email, senior_enrich_instructors_group.getEmail(), dry_run);
         }
+        Utilities.sleep(1000)
+      }
+      if (data[i][rolenonleadCol].toString().indexOf('Mentor') != -1) {
+        if (data[i][studentYearAssociationCol]=='Senior'){
+          if (!mentor_groups[data[i][2020]].hasUser(email)) {
+            addGroupMember(email, mentor_groups[data[i][2020]].getEmail(), dry_run);
+          }
+        }
+        if (data[i][studentYearAssociationCol]=='Junior'){
+          if (!mentor_groups[data[i][2021]].hasUser(email)) {
+            addGroupMember(email, mentor_groups[data[i][2021]].getEmail(), dry_run);
+          }
+        }
+        if (data[i][studentYearAssociationCol]=='Sophomore'){
+          if (!mentor_groups[data[i][2022]].hasUser(email)) {
+            addGroupMember(email, mentor_groups[data[i][2022]].getEmail(), dry_run);
+          }
+        }
+ 
         Utilities.sleep(1000)
       }
     }
