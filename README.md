@@ -182,10 +182,21 @@ Write a draft email template in the admin account gmail page introducing new use
     Minds Matter Seattle Technology Team
 
 ```
-18. Install a mail merge add-on on your “User Creation” spreadsheet.  We use “Yet another Mail Merge”.  Run the add-on to email users.  Free version limited to emailing 50 people per day, $40/year to make it more than that. 
+18. Identify the ID of the draft email you saved...
+open the gscript project. 
+open MailMerge.gs
+run>run function>getDraftId
+view>Logs
+note the ID after the : of the subject line
+save this ID in the project properties:
+file>project properties>Script properties.  Set newAccountDraftID = IDNOTEDABOVE
+
+19. Setup Triggers
+<!-- 
+Install a mail merge add-on on your “User Creation” spreadsheet.  We use “Yet another Mail Merge”.  Run the add-on to email users.  Free version limited to emailing 50 people per day, $40/year to make it more than that. 
 Prepare to deal with questions about logins and people losing login email or not receiving it due to types in email address, or not understanding how to add a gsuite account to their google login if they are using gmail for personal use. One helpful tip is that the admin console allows you to download a list of users and when they have last logged in.  We used this to setup a separate mail merge spreadsheet which emailed users at their personal logins if they hadn’t yet logged in.  I set this up by doing a merge between the login spreadsheet and the user creation spreadsheet in python. 
 
-    TODO: make this capability easier to do.  We also used this to manually approach and assist volunteers and students who were not yet using the system.  We did have to utilize people’s personal emails for the first session as well because we did not have confidence that everyone was using and checking their new minds matter accounts.
+    TODO: make this capability easier to do.  We also used this to manually approach and assist volunteers and students who were not yet using the system.  We did have to utilize people’s personal emails for the first session as well because we did not have confidence that everyone was using and checking their new minds matter accounts. -->
 
 
 TODOS
