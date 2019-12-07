@@ -1,3 +1,6 @@
+var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
+var ss = SpreadsheetApp.openById(userID);
+
 function processRow(rowData, mergeData) {
     var emailText = fillInTemplateFromObject(mergeData.template, rowData);
     var emailSubject = fillInTemplateFromObject(mergeData.subject, rowData);
@@ -5,14 +8,22 @@ function processRow(rowData, mergeData) {
     mergeData['htmlBody'] = emailText;
     if(rowData.cc != undefined) mergeData.cc = rowData.cc;
     if(rowData.bcc != undefined) mergeData.bcc = rowData.bcc;
-    GmailApp.sendEmail(rowData.emailAddress, emailSubject, plainTextBody, mergeData);
+    Logger.log(rowData)
+    GmailApp.sendEmail(rowData.privateemail, emailSubject, plainTextBody, mergeData);
+}
+function getDraftId() {
+  var drafts=GmailApp.getDrafts();
+  for(var i=0;i<drafts.length;i++) {
+    Logger.log(drafts[i].getId());
+  }
 }
 
 function run_merge() {
     var name = "Minds Matter of Seattle"
     var from = 'admin@mindsmatterseattle.org'
     var draftID = PropertiesService.getScriptProperties().getProperty('newAccountDraftID');
-    var selectedTemplate = GmailApp.getDraft(draftID)
+    var selectedDraft = GmailApp.getDraft(draftID)
+    var selectedTemplate = selectedDraft.getMessage()
     var dataSheet = ss.getActiveSheet();
     var headers = createHeaderIfNotFound_('Merge status');
     var dataRange = dataSheet.getDataRange();
@@ -74,7 +85,7 @@ function run_merge() {
     Logger.log(objects);
     for (var i = 0; i < objects.length; ++i) {
         var rowData = objects[i];
-        if (rowData.mergeStatus != "") {
+        if (rowData.mergeStatus == "") {
             try {
                 processRow(rowData, mergeData);
                 dataSheet.getRange(i + 2, headers.indexOf('Merge status') + 1).setValue("Done").clearFormat().setComment(new Date());
@@ -97,7 +108,10 @@ function run_merge() {
 function fillInTemplateFromObject(template, data) {
     template = template.replace(/&lt;&lt;/g, '<<');
     template = template.replace(/&gt;&gt;/g, '>>');
+    template = template.replace(/\{\{/g, '<<');
+    template = template.replace(/\}\}/g, '>>');
     var email = template;
+    Logger.log(template)
     template = template.replace(/">/g, "~");
     // Search for all the variables to be replaced, for instance <<Column name>>
     var templateVars = template.match(/<<[^\>]+>>/g);
@@ -109,6 +123,7 @@ function fillInTemplateFromObject(template, data) {
     else {
         var templateVars = template.match(/\$\%[^\%]+\%/g);
     }
+    Logger.log(templateVars)
     if (templateVars != null) {
         // Replace variables from the template with the actual values from the data object.
         // If no value is available, replace with the empty string.
