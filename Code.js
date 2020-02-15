@@ -280,13 +280,9 @@ function syncGoogleWithSalesforce() {
 
 }
 
-function isUserByEmail(user, rows, emailCol, protectedAccounts) {
+function isUserByEmail(user, rows, emailCol) {
   for (var r = 1; r < rows.length; r++) {
     var email = rows[r][emailCol];
-    var username = email.split('@')[0];
-    if (protectedAccounts.indexOf(username) != -1){
-      return true;
-    }
     for (var e = 0; e < user.emails.length; e++) {
       if (email.indexOf(user.emails[e].address) != -1) {
         return true;
@@ -335,7 +331,7 @@ function auditActive() {
   var lastNameCol = -1;
   var phoneCol = -1;
 
-  var admin_accounts = "admin@"+domainname+ ",marketing@" +domainname
+  var admin_accounts = "admin@"+domainname+ ",marketing@" +domainname+",finance@"+domainname;
   for (i = 0; i < lastColumn; i++) {
     if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
     else if (rangeValues[0][i] === 'Email') emailCol = i;
@@ -355,7 +351,7 @@ function auditActive() {
       if (admin_accounts.indexOf(user.primaryEmail) == -1) {
         if (!isUserbyName(user, rangeValues, firstNameCol, lastNameCol)) {
           //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
-          if (!isUserByEmail(user, rangeValues, emailCol, protectedAccounts)) {          
+          if (!isUserByEmail(user, rangeValues, emailCol)) {          
               suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
               console.log({message: 'User Suspended', fullName: user.name.fullName, email:user.primaryEmail});
           }
