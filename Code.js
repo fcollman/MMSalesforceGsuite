@@ -52,6 +52,7 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
 function addGroupMember(userEmail, groupEmail, dry_run) {
   
     group = GroupsApp.getGroupByEmail(groupEmail)
+    
     if (!group.hasUser(userEmail)) {
       var member = {
         email: userEmail,
@@ -103,7 +104,6 @@ function listAllUsers() {
   } while (pageToken);
   return allUsers;
 }
-
 
 function syncGoogleWithSalesforce() {
   var dry_run = false;
@@ -169,15 +169,17 @@ function syncGoogleWithSalesforce() {
     var email = data[i][firstNameCol].toLowerCase() + "." + data[i][lastNameCol].toLowerCase() + "@" + domainname;
     email = email.replace(" ", ".");
     email = email.replace(" ", ".");
+    var is_user = isUser(email);
 
     if (data[i][volunteerTypeCol] === 'Volunteer') {
-      if (!isUser(email)) {
+      if (!is_user) {
         addUser(data[i][firstNameCol],
           data[i][lastNameCol],
           email,
           data[i][emailCol],
           data[i][phoneCol],
           dry_run);
+          is_user=true;
       }
 
       if (!volunteer_group.hasUser(email)) {
@@ -186,13 +188,14 @@ function syncGoogleWithSalesforce() {
       Utilities.sleep(1000)
     }
     if (data[i][leadershipCol].toString().indexOf('Chapter Board') != -1) {
-      if (!isUser(email)) {
+      if (!is_user) {
         addUser(data[i][firstNameCol],
           data[i][lastNameCol],
           email,
           data[i][emailCol],
           data[i][phoneCol],
           dry_run);
+        is_user=true;
       }
 
       if (!board_group.hasUser(email)) {
@@ -200,22 +203,41 @@ function syncGoogleWithSalesforce() {
       }
       Utilities.sleep(1000)
     }
+    else{
+      if (is_user){
+        if (board_group.hasUser(email)){
+          AdminDirectory.Members.remove(board_group.getEmail(), email);
+        }
+        Utilities.sleep(1000);
+      }
+    }
+
+    
     if (data[i][leadershipCol].toString().indexOf('Chapter Executive Committee') != -1) {
       if (!ec_group.hasUser(email)) {
         addGroupMember(email, ec_group.getEmail(), dry_run);
       }
 
     }
+    else{
+      if (is_user){
+        if (ec_group.hasUser(email)){
+        AdminDirectory.Members.remove(ec_group.getEmail(), email);
+        }
+        Utilities.sleep(1000)
+     }
+   }
 
     if (data[i][volunteerTypeCol] === 'Student') {
       if (data[i][yearCol] > 2019) {
-        if (!isUser(email)) {
+        if (!is_user) {
           addUser(data[i][firstNameCol],
             data[i][lastNameCol],
             email,
             data[i][emailCol],
             data[i][phoneCol],
             dry_run);
+            is_user=true;
         }
         if (!student_groups[data[i][yearCol]].hasUser(email)) {
           addGroupMember(email, student_groups[data[i][yearCol]].getEmail(), dry_run);
@@ -224,7 +246,7 @@ function syncGoogleWithSalesforce() {
       }
       Utilities.sleep(1000)
     }
-    if (isUser(email)) {
+    if (is_user) {
       if (!active_group.hasUser(email)) {
         addGroupMember(email, active_group.getEmail(), dry_run);
       }
