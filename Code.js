@@ -63,6 +63,9 @@ function addGroupMember(userEmail, groupEmail, dry_run) {
       }
       console.log("User %s added as a member of group %s.", userEmail, groupEmail);
     }
+    else {
+      console.log("User %s not added as a member of group %s because they are already member", userEmail, groupEmail);
+    }
   }
   
 function isUser(email) {
@@ -72,6 +75,45 @@ function isUser(email) {
   }
   catch (e) {
     return false;
+  }
+}
+
+function auditGroup(group, correctEmails, dry_run){
+  
+  var groupEmail = group.getEmail();
+  console.log('auditing ' + groupEmail);
+  console.log('correctEmails' + correctEmails);
+  users = group.getUsers();
+  var found_correct =[]
+  for (ce =0 ; ce<correctEmails.length; ce++){
+    found_correct.push(false);
+  }
+  // for all users in group validate that they should be there
+  for (var i = 0; i < users.length; i++) {
+    var user = users[i];
+    var validated_user = false;
+    for (var ce =0; ce < correctEmails.length; ce++) {
+      var correctEmail = correctEmails[ce];
+      if (correctEmail.indexOf(user) != -1) {
+            validated_user=true;
+            found_correct[ce]=true;
+      }
+    }
+    if (!validated_user){
+      // remove user
+      if (!dry_run){
+        AdminDirectory.Members.remove(groupEmail, user.getEmail());
+      }
+      console.log('removing ' + user)
+    }
+  }
+  // for all users that should be in group make sure they are there
+  for (var ce =0; ce < correctEmails.length; ce++){
+    var correctEmail = correctEmails[ce];
+    if (!found_correct[ce]){
+        addGroupMember(correctEmail, group.getEmail(), dry_run);
+        Utilities.sleep(1000);
+    }
   }
 }
 
@@ -105,6 +147,15 @@ function listAllUsers() {
   return allUsers;
 }
 
+function testMe(){
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
+  users = board_group.getUsers();
+  for (i=0;i<users.length;i++){
+    user = users[i];
+    console.log(user)
+  }
+}
 function syncGoogleWithSalesforce() {
   var dry_run = false;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
@@ -299,6 +350,172 @@ function syncGoogleWithSalesforce() {
     }
 
   }
+
+}
+
+function syncGoogleWithSalesforce_v2() {
+  var dry_run = false;
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
+  var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
+  var volunteer_group = GroupsApp.getGroupByEmail("volunteers@" + domainname);
+  var ec_group = GroupsApp.getGroupByEmail("ec@"+domainname);
+  var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
+  var active_group = GroupsApp.getGroupByEmail("active@"+domainname);
+  var math_instructors_group = GroupsApp.getGroupByEmail("math-instructors@"+domainname);
+  var wct_instructors_group = GroupsApp.getGroupByEmail("wct-instructors@"+domainname);
+  var testprep_instructors_group = GroupsApp.getGroupByEmail("testprep-instructors@"+domainname);
+  var senior_enrich_instructors_group = GroupsApp.getGroupByEmail("senior-enrichment-instructors@"+domainname);
+
+  var student_groups = {}
+  var mentor_groups = {}
+
+  var correct_student_group_emails  = {};
+  for (i = 2020; i <= 2022; i++) {
+    student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
+    mentor_groups[i] = GroupsApp.getGroupByEmail(i+"mentors"+"@"+ domainname);
+    correct_student_group_emails[i]=[];
+  }
+
+  console.log(ss.getName());
+  
+  var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
+  var sheet = ss.getSheetByName(salesforceSheetName);
+  var rangeData = sheet.getDataRange();
+  var lastColumn = rangeData.getLastColumn();
+  var lastRow = rangeData.getLastRow();
+  var searchRange = sheet.getRange(1, 1, 1, lastColumn - 1);
+  var rangeValues = searchRange.getValues();
+
+
+  var volunteerTypeCol = -1;
+  var emailCol = -1;
+  var leadershipCol = -1;
+  var yearCol = -1;
+  var rolenonleadCol = -1;
+  var firstNameCol = -1;
+  var lastNameCol = -1;
+  var phoneCol = -1;
+  var studentYearAssociationCol = -1;
+
+  for (i = 0; i < lastColumn; i++) {
+    if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
+    else if (rangeValues[0][i] === 'Email') emailCol = i;
+    else if (rangeValues[0][i] === 'Leadership') leadershipCol = i;
+    else if (rangeValues[0][i] === 'Year') yearCol = i;
+    else if (rangeValues[0][i] === 'Role (Non-Leadership)') rolenonleadCol = i;
+    else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
+    else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
+    else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
+    else if (rangeValues[0][i] === 'Student Year Association') studentYearAssociationCol = i;
+  }
+  var correct_volunteer_emails=[];
+  var correct_board_emails=[];
+  var correct_ec_emails=[];
+  var correct_math_emails=[];
+  var correct_wct_emails=[];
+  var correct_test_prep_emails=[];
+  var correct_senior_enrich_emails=[];
+  var correct_soph_mentor_emails=[];
+  var correct_junior_mentor_emails=[];
+  var correct_senior_mentor_emails=[];
+  var correct_active_emails=[];
+
+
+  data = rangeData.getValues();
+
+  // allCurrentUsers = listAllUsers();
+
+  for (i = 1; i < lastRow - 1; i++) {
+    phone = data[i][phoneCol];
+    var email = data[i][firstNameCol].toLowerCase() + "." + data[i][lastNameCol].toLowerCase() + "@" + domainname;
+    email = email.replace(" ", ".");
+    email = email.replace(" ", ".");
+    var is_user = isUser(email);
+
+    // make a user if we they are not in the system
+    if (!is_user) {
+      // avoid making emails for older alumni in system
+      if (data[i][volunteerTypeCol] != 'Alumni') {
+          addUser(data[i][firstNameCol],
+            data[i][lastNameCol],
+            email,
+            data[i][emailCol],
+            data[i][phoneCol],
+            dry_run);
+            is_user=true;
+        }
+    }
+    if (data[i][volunteerTypeCol] === 'Student') {
+      var student_year = data[i][yearCol];
+      if (student_year > 2019) {
+        correct_student_group_emails[student_year].push(email);
+        correct_active_emails.push(email);
+      }
+    }
+    else{
+      if (data[i][volunteerTypeCol] === 'Volunteer') {
+        correct_volunteer_emails.push(email);
+        correct_active_emails.push(email);
+      }
+        
+      if (data[i][leadershipCol].toString().indexOf('Chapter Board') != -1) {
+        correct_board_emails.push(email);
+        correct_active_emails.push(email);
+      }
+
+      if (data[i][leadershipCol].toString().indexOf('Chapter Executive Committee') != -1) {
+        correct_ec_emails.push(email);
+      }
+      non_lead_role = data[i][rolenonleadCol];
+      if (non_lead_role) {
+        if (non_lead_role.toString().indexOf('Math') != -1) {
+          correct_math_emails.push(email);
+        }
+        if (non_lead_role.toString().indexOf('W&CT') != -1) {
+          correct_wct_emails.push(email);
+        }
+        if (non_lead_role.toString().indexOf('Test Prep') != -1) {
+          correct_test_prep_emails.push(email);
+        }
+        if (non_lead_role.toString().indexOf('Senior') != -1) {
+          correct_senior_enrich_emails.push(email);
+        }
+        if (non_lead_role.toString().indexOf('Mentor') != -1) {
+          
+          if (data[i][studentYearAssociationCol]=='Senior'){
+            correct_senior_mentor_emails.push(email);
+          }
+          if (data[i][studentYearAssociationCol]=='Junior'){
+            correct_junior_mentor_emails.push(email);
+          }
+          if (data[i][studentYearAssociationCol]=='Sophomore'){
+            correct_soph_mentor_emails.push(email);
+          }
+        }
+      }
+    }
+  }
+
+  // now lets audit each group
+  console.log('num desired active emails' + correct_active_emails.length)
+  console.log('num desired volunteer emails' + correct_volunteer_emails.length)
+  console.log('num desired board emails' + correct_board_emails.length)
+  console.log('num desired math emails' + correct_math_emails.length)
+  console.log('num desired test prep emails' + correct_test_prep_emails.length)
+  console.log('num desired wct emails ' + correct_wct_emails.length)
+  auditGroup(active_group, correct_active_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(volunteer_group, correct_volunteer_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(board_group, correct_board_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(math_instructors_group, correct_math_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(testprep_instructors_group, correct_test_prep_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(wct_instructors_group, correct_wct_emails, dry_run);
+
 
 }
 
