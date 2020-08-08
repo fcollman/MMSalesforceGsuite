@@ -515,7 +515,10 @@ function syncGoogleWithSalesforce_v2() {
   auditGroup(testprep_instructors_group, correct_test_prep_emails, dry_run);
   Utilities.sleep(1000)
   auditGroup(wct_instructors_group, correct_wct_emails, dry_run);
-
+  Utilities.sleep(1000)
+  auditGroup(ec_group, correct_ec_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(senior_enrich_instructors_group, correct_senior_enrich_emails, dry_run);
 
 }
 
