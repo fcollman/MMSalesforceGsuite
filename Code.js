@@ -79,7 +79,7 @@ function isUser(email) {
 }
 
 function auditGroup(group, correctEmails, dry_run){
-  
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
   var groupEmail = group.getEmail();
   console.log('auditing ' + groupEmail);
   console.log('correctEmails' + correctEmails);
@@ -98,6 +98,10 @@ function auditGroup(group, correctEmails, dry_run){
             validated_user=true;
             found_correct[ce]=true;
       }
+
+    }
+    if (user == 'admin@'+domainname){
+      validated_user=true;
     }
     if (!validated_user){
       // remove user
@@ -358,6 +362,8 @@ function syncGoogleWithSalesforce() {
 function syncGoogleWithSalesforce_v2() {
   var dry_run = false;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var lowyear = PropertiesService.getScriptProperties().getProperty('lowyear');
+  var highyear = PropertiesService.getScriptProperties().getProperty('highyear');
   var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
   var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
   var volunteer_group = GroupsApp.getGroupByEmail("volunteers@" + domainname);
@@ -373,7 +379,7 @@ function syncGoogleWithSalesforce_v2() {
   var mentor_groups = {}
 
   var correct_student_group_emails  = {};
-  for (i = 2020; i <= 2022; i++) {
+  for (i = lowyear; i <= highyear; i++) {
     student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
     mentor_groups[i] = GroupsApp.getGroupByEmail(i+"mentors"+"@"+ domainname);
     correct_student_group_emails[i]=[];
@@ -450,9 +456,10 @@ function syncGoogleWithSalesforce_v2() {
             is_user=true;
         }
     }
-    if (data[i][volunteerTypeCol] === 'Student') {
+    if ((data[i][volunteerTypeCol] === 'Student') | (data[i][volunteerTypeCol] === 'Alumni') ) {
       var student_year = data[i][yearCol];
-      if (student_year > 2019) {
+      
+      if (student_year >= lowyear) {
         correct_student_group_emails[student_year].push(email);
         correct_active_emails.push(email);
       }
@@ -472,7 +479,7 @@ function syncGoogleWithSalesforce_v2() {
         correct_ec_emails.push(email);
         if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Senior")!= -1){
           correct_senior_mentor_emails.push(email);
-        }
+        } 
         if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Junior")!= -1){
           correct_junior_mentor_emails.push(email);
         }
@@ -541,6 +548,16 @@ function syncGoogleWithSalesforce_v2() {
   auditGroup(ec_group, correct_ec_emails, dry_run);
   Utilities.sleep(1000)
   auditGroup(senior_enrich_instructors_group, correct_senior_enrich_emails, dry_run);
+  Utilities.sleep(1000)
+  for (i = lowyear; i <= highyear; i++) {
+    auditGroup(student_groups[i], correct_student_group_emails[i], dry_run);
+    Utilities.sleep(1000)
+  }
+  auditGroup(mentor_groups[highyear-2], correct_senior_mentor_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(mentor_groups[highyear-1], correct_junior_mentor_emails, dry_run);
+  Utilities.sleep(1000)
+  auditGroup(mentor_groups[highyear], correct_soph_mentor_emails, dry_run);
 
 }
 
@@ -595,7 +612,6 @@ function auditActive() {
   var lastNameCol = -1;
   var phoneCol = -1;
 
-  var admin_accounts = "admin@"+domainname+ ",marketing@" +domainname+",finance@"+domainname;
   for (i = 0; i < lastColumn; i++) {
     if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
     else if (rangeValues[0][i] === 'Email') emailCol = i;
@@ -617,7 +633,7 @@ function auditActive() {
           //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
           if (!isUserByEmail(user, rangeValues, emailCol)) {          
               suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
-              console.log({message: 'User Suspended', fullName: user.name.fullName, email:user.primaryEmail});
+              console.log({message: 'User Marked For Suspension', fullName: user.name.fullName, email:user.primaryEmail});
           }
         }
       }
@@ -639,5 +655,7 @@ function suspendUsers() {
     var user = AdminDirectory.Users.get(user_email);
     user.suspended = true;
     AdminDirectory.Users.update(user, user_email);
+    console.log({message: 'User Suspended', fullName: user.name.fullName, email:user.primaryEmail});
+
   }
 }
