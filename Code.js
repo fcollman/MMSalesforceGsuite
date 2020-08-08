@@ -330,17 +330,17 @@ function syncGoogleWithSalesforce() {
       }
       if (data[i][rolenonleadCol].toString().indexOf('Mentor') != -1) {
         if (data[i][studentYearAssociationCol]=='Senior'){
-          if (!mentor_groups[data[i][2020]].hasUser(email)) {
+          if (!mentor_groups[data[i][2021]].hasUser(email)) {
             addGroupMember(email, mentor_groups[data[i][2020]].getEmail(), dry_run);
           }
         }
         if (data[i][studentYearAssociationCol]=='Junior'){
-          if (!mentor_groups[data[i][2021]].hasUser(email)) {
+          if (!mentor_groups[data[i][2022]].hasUser(email)) {
             addGroupMember(email, mentor_groups[data[i][2021]].getEmail(), dry_run);
           }
         }
         if (data[i][studentYearAssociationCol]=='Sophomore'){
-          if (!mentor_groups[data[i][2022]].hasUser(email)) {
+          if (!mentor_groups[data[i][2023]].hasUser(email)) {
             addGroupMember(email, mentor_groups[data[i][2022]].getEmail(), dry_run);
           }
         }
