@@ -198,6 +198,7 @@ function syncGoogleWithSalesforce() {
   var lastNameCol = -1;
   var phoneCol = -1;
   var studentYearAssociationCol = -1;
+  var leadershipSubRoleCol = -1;
 
   for (i = 0; i < lastColumn; i++) {
     if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
@@ -205,6 +206,7 @@ function syncGoogleWithSalesforce() {
     else if (rangeValues[0][i] === 'Leadership') leadershipCol = i;
     else if (rangeValues[0][i] === 'Year') yearCol = i;
     else if (rangeValues[0][i] === 'Role (Non-Leadership)') rolenonleadCol = i;
+    else if (rangeValues[0][i] === 'Leadership Sub-Role') leadershipSubRoleCol = i;
     else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
@@ -268,6 +270,7 @@ function syncGoogleWithSalesforce() {
       if (!ec_group.hasUser(email)) {
         addGroupMember(email, ec_group.getEmail(), dry_run);
       }
+
 
     }
     else{
@@ -344,11 +347,10 @@ function syncGoogleWithSalesforce() {
             addGroupMember(email, mentor_groups[data[i][2022]].getEmail(), dry_run);
           }
         }
- 
         Utilities.sleep(1000)
       }
     }
-
+    
   }
 
 }
@@ -397,6 +399,7 @@ function syncGoogleWithSalesforce_v2() {
   var lastNameCol = -1;
   var phoneCol = -1;
   var studentYearAssociationCol = -1;
+  var leadershipSubRoleCol = -1;
 
   for (i = 0; i < lastColumn; i++) {
     if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
@@ -404,6 +407,7 @@ function syncGoogleWithSalesforce_v2() {
     else if (rangeValues[0][i] === 'Leadership') leadershipCol = i;
     else if (rangeValues[0][i] === 'Year') yearCol = i;
     else if (rangeValues[0][i] === 'Role (Non-Leadership)') rolenonleadCol = i;
+    else if (rangeValues[0][i] === 'Leadership Sub-Role') leadershipSubRoleCol = i;
     else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
@@ -466,6 +470,24 @@ function syncGoogleWithSalesforce_v2() {
 
       if (data[i][leadershipCol].toString().indexOf('Chapter Executive Committee') != -1) {
         correct_ec_emails.push(email);
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Senior")!= -1){
+          correct_senior_mentor_emails.push(email);
+        }
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Junior")!= -1){
+          correct_junior_mentor_emails.push(email);
+        }
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Sophomore")!= -1){
+          correct_soph_mentor_emails.push(email);
+        }
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  W&CT/Enrichment")!= -1){
+          correct_wct_emails.push(email);
+        }
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Test Prep")!= -1){
+          correct_test_prep_emails.push(email);
+        }
+        if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Math")!= -1){
+          correct_math_emails.push(email);
+        }
       }
       non_lead_role = data[i][rolenonleadCol];
       if (non_lead_role) {
@@ -493,7 +515,7 @@ function syncGoogleWithSalesforce_v2() {
             correct_soph_mentor_emails.push(email);
           }
         }
-      }
+      }       
     }
   }
 
@@ -557,7 +579,7 @@ function auditActive() {
 
   var userSuspensionSheetID = PropertiesService.getScriptProperties().getProperty('userSuspensionSheetID');
   var suspendedSpreadSheet = SpreadsheetApp.openById(userSuspensionSheetID);
-  var protectedAccounts = PropertiesService.getScriptProperties().getProperty('protectedAccounts').split(',');
+  var protectedAccounts = PropertiesService.getScriptProperties().getProperty('protectedAccounts');
   var suspendedSheet = suspendedSpreadSheet.getSheetByName("SuspendedUsers");
   var rangeData = sheet.getDataRange();
   var lastColumn = rangeData.getLastColumn();
@@ -590,7 +612,7 @@ function auditActive() {
   for (i = 1; i < all_users.length; i++) {
     user = all_users[i];
     if (!user.suspended){
-      if (admin_accounts.indexOf(user.primaryEmail) == -1) {
+      if (protectedAccounts.indexOf(user.primaryEmail.split('@')[0]) == -1) {
         if (!isUserbyName(user, rangeValues, firstNameCol, lastNameCol)) {
           //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
           if (!isUserByEmail(user, rangeValues, emailCol)) {          
