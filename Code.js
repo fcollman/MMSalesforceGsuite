@@ -329,7 +329,7 @@ function syncGoogleWithSalesforce() {
         }
         Utilities.sleep(1000)
       }
-      if (data[i][rolenonleadCol].toString().indexOf('Senior') != -1) {
+      if (data[i][rolenonleadCol].toString().indexOf('College Application Support') != -1) {
         if (!senior_enrich_instructors_group.hasUser(email)) {
           addGroupMember(email, senior_enrich_instructors_group.getEmail(), dry_run);
         }
@@ -507,7 +507,7 @@ function syncGoogleWithSalesforce_v2() {
         if (non_lead_role.toString().indexOf('Test Prep') != -1) {
           correct_test_prep_emails.push(email);
         }
-        if (non_lead_role.toString().indexOf('Senior') != -1) {
+        if (non_lead_role.toString().indexOf('College Application Support') != -1) {
           correct_senior_enrich_emails.push(email);
         }
         if (non_lead_role.toString().indexOf('Mentor') != -1) {
