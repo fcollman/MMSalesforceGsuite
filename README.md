@@ -58,6 +58,7 @@ It should have the following columns
     Role (Non-Leadership)
     Leadership
     Leadership Sub-Role
+    Student Year Association
 
 We also put these fields to get them into gsuites
 Mailing Street	Mailing City	Mailing State/Province	Mailing Zip/Postal Code	Mailing Country		Mobile
