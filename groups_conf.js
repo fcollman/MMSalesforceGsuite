@@ -1,4 +1,9 @@
-var groups_config  = {
+var groups_config_dict  = {
+    'mindsmatterseattle': seattle_groups_config,
+    'mindsmatterco': co_groups_config
+}
+
+var seattle_groups_config={
     "active": {
         "filters": [
             {
@@ -134,6 +139,178 @@ var groups_config  = {
         "description":  "Minds Matter Students Graduating 2022"
     },
     "students2023":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2023
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2023",
+        "description":  "Minds Matter Students Graduating 2023"
+    },
+    "2021mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Senior"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2021",
+        "description":  "Minds Matter Mentors for Students Graduating 2021",
+        "do_remove": false
+    },
+    "2022mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Junior"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2022",
+        "description":  "Minds Matter Mentors for Students Graduating 2022",
+        "do_remove": false
+    },
+    "2023mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Sophomore"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2023",
+        "description":  "Minds Matter Mentors for Students Graduating 2023",
+        "do_remove": false
+    }
+}
+
+var co_groups_config  = {
+    "active": {
+        "filters": [
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Volunteer"
+            },
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Board Member"
+            },
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Employee"
+            }
+        ],
+        "combination": "or",
+        "name": "Minds Matter Colorado All",
+        "description": "All Minds Matter Colorado active members",
+        "do_remove": true
+    },
+    "board":{
+            "filters":[
+                {
+                    "column":"Leadership",
+                    "condition": "contains",
+                    "value": "Chapter Board"
+                }
+            ],
+            "name": "Minds Matter of Colorado Board",
+            "description":  "Minds Matter of Colorado Board",
+            "do_remove": true
+        },
+    "staff":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Employee"
+            }
+        ],
+        "name": "Minds Matter Colorado Leadership",
+        "description":  "Minds Matter Colorado Leadership",
+        "do_remove": true
+    },
+    "volunteers":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Volunteer"
+            }
+        ],
+        "name": "Minds Matter Volunteers",
+        "description":  "Minds Matter Volunteers",
+        "do_remove": true
+    },
+    "2021mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2021
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2021",
+        "description":  "Minds Matter Students Graduating 2021"
+    },
+    "2022mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2022
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2022",
+        "description":  "Minds Matter Students Graduating 2022"
+    },
+    "2023mentees":{
         "filters":[
             {
                 "column":"Contact Record Type",

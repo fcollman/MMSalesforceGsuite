@@ -450,7 +450,7 @@ function syncGoogleWithSalesforce_v2() {
   var dry_run = false;
   do_remove_default = true;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
-  
+  var groups_config = groups_config_dict[domainname];
   groupDict = {}
   correctEmailDict = {}
   for (var group in groups_config) {
