@@ -221,7 +221,7 @@ function syncGoogleWithSalesforce() {
 
   // allCurrentUsers = listAllUsers();
 
-  for (i = 1; i < lastRow - 1; i++) {
+  for (i = 1; i < lastRow; i++) {
     phone = data[i][phoneCol];
     var email = data[i][firstNameCol].toLowerCase() + "." + data[i][lastNameCol].toLowerCase() + "@" + domainname;
     email = email.replace(" ", ".");
@@ -436,7 +436,7 @@ function syncGoogleWithSalesforce_v2() {
 
   // allCurrentUsers = listAllUsers();
 
-  for (i = 1; i < lastRow - 1; i++) {
+  for (i = 1; i < lastRow; i++) {
     phone = data[i][phoneCol];
     var email = data[i][firstNameCol].toLowerCase() + "." + data[i][lastNameCol].toLowerCase() + "@" + domainname;
     email = email.replace(" ", ".");
@@ -658,4 +658,222 @@ function suspendUsers() {
     console.log({message: 'User Suspended', fullName: user.name.fullName, email:user.primaryEmail});
 
   }
+}
+function getGroupConfig() {
+  var fileName = PropertiesService.getScriptProperties().getProperty('groupConfigFile');
+  if (fileName == null){
+    fileName="seattle_groups.json"
+  }
+  var files = DriveApp.getFilesByName(fileName);
+  if (files.hasNext()) {
+    var file = files.next();
+    var content = file.getBlob().getDataAsString();
+    var json = JSON.parse(content);
+  }
+  return json
+}
+
+function syncGoogleWithSalesforce_v3() {
+  var dry_run = true;
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  
+  groupJson=getGroupConfig();
+  
+  // var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
+  // var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
+
+
+  // var volunteer_group = GroupsApp.getGroupByEmail("volunteers@" + domainname);
+  // var ec_group = GroupsApp.getGroupByEmail("ec@"+domainname);
+  // var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
+  // var active_group = GroupsApp.getGroupByEmail("active@"+domainname);
+  // var math_instructors_group = GroupsApp.getGroupByEmail("math-instructors@"+domainname);
+  // var wct_instructors_group = GroupsApp.getGroupByEmail("wct-instructors@"+domainname);
+  // var testprep_instructors_group = GroupsApp.getGroupByEmail("testprep-instructors@"+domainname);
+  // var senior_enrich_instructors_group = GroupsApp.getGroupByEmail("senior-enrichment-instructors@"+domainname);
+
+  // var student_groups = {}
+  // var mentor_groups = {}
+
+  // var correct_student_group_emails  = {};
+  // for (i = lowyear; i <= highyear; i++) {
+  //   student_groups[i] = GroupsApp.getGroupByEmail("students" + i + "@" + domainname);
+  //   mentor_groups[i] = GroupsApp.getGroupByEmail(i+"mentors"+"@"+ domainname);
+  //   correct_student_group_emails[i]=[];
+  // }
+
+  // console.log(ss.getName());
+  
+  // var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
+  // var sheet = ss.getSheetByName(salesforceSheetName);
+  // var rangeData = sheet.getDataRange();
+  // var lastColumn = rangeData.getLastColumn();
+  // var lastRow = rangeData.getLastRow();
+  // var searchRange = sheet.getRange(1, 1, 1, lastColumn - 1);
+  // var rangeValues = searchRange.getValues();
+
+
+  // var volunteerTypeCol = -1;
+  // var emailCol = -1;
+  // var leadershipCol = -1;
+  // var yearCol = -1;
+  // var rolenonleadCol = -1;
+  // var firstNameCol = -1;
+  // var lastNameCol = -1;
+  // var phoneCol = -1;
+  // var studentYearAssociationCol = -1;
+  // var leadershipSubRoleCol = -1;
+
+  // for (i = 0; i < lastColumn; i++) {
+  //   if (rangeValues[0][i] === 'Contact Record Type') volunteerTypeCol = i;
+  //   else if (rangeValues[0][i] === 'Email') emailCol = i;
+  //   else if (rangeValues[0][i] === 'Leadership') leadershipCol = i;
+  //   else if (rangeValues[0][i] === 'Year') yearCol = i;
+  //   else if (rangeValues[0][i] === 'Role (Non-Leadership)') rolenonleadCol = i;
+  //   else if (rangeValues[0][i] === 'Leadership Sub-Role') leadershipSubRoleCol = i;
+  //   else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
+  //   else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
+  //   else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
+  //   else if (rangeValues[0][i] === 'Student Year Association') studentYearAssociationCol = i;
+  // }
+  // var correct_volunteer_emails=[];
+  // var correct_board_emails=[];
+  // var correct_ec_emails=[];
+  // var correct_math_emails=[];
+  // var correct_wct_emails=[];
+  // var correct_test_prep_emails=[];
+  // var correct_senior_enrich_emails=[];
+  // var correct_soph_mentor_emails=[];
+  // var correct_junior_mentor_emails=[];
+  // var correct_senior_mentor_emails=[];
+  // var correct_active_emails=[];
+
+
+  // data = rangeData.getValues();
+
+  // // allCurrentUsers = listAllUsers();
+
+  // for (i = 1; i < lastRow - 1; i++) {
+  //   phone = data[i][phoneCol];
+  //   var email = data[i][firstNameCol].toLowerCase() + "." + data[i][lastNameCol].toLowerCase() + "@" + domainname;
+  //   email = email.replace(" ", ".");
+  //   email = email.replace(" ", ".");
+  //   var is_user = isUser(email);
+
+  //   // make a user if we they are not in the system
+  //   if (!is_user) {
+  //     // avoid making emails for older alumni in system
+  //     if (data[i][volunteerTypeCol] != 'Alumni') {
+  //         addUser(data[i][firstNameCol],
+  //           data[i][lastNameCol],
+  //           email,
+  //           data[i][emailCol],
+  //           data[i][phoneCol],
+  //           dry_run);
+  //           is_user=true;
+  //       }
+  //   }
+  //   if ((data[i][volunteerTypeCol] === 'Student') | (data[i][volunteerTypeCol] === 'Alumni') ) {
+  //     var student_year = data[i][yearCol];
+      
+  //     if (student_year >= lowyear) {
+  //       correct_student_group_emails[student_year].push(email);
+  //       correct_active_emails.push(email);
+  //     }
+  //   }
+  //   else{
+  //     if (data[i][volunteerTypeCol] === 'Volunteer') {
+  //       correct_volunteer_emails.push(email);
+  //       correct_active_emails.push(email);
+  //     }
+        
+  //     if (data[i][leadershipCol].toString().indexOf('Chapter Board') != -1) {
+  //       correct_board_emails.push(email);
+  //       correct_active_emails.push(email);
+  //     }
+
+  //     if (data[i][leadershipCol].toString().indexOf('Chapter Executive Committee') != -1) {
+  //       correct_ec_emails.push(email);
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Senior")!= -1){
+  //         correct_senior_mentor_emails.push(email);
+  //       } 
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Junior")!= -1){
+  //         correct_junior_mentor_emails.push(email);
+  //       }
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Sophomore")!= -1){
+  //         correct_soph_mentor_emails.push(email);
+  //       }
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  W&CT/Enrichment")!= -1){
+  //         correct_wct_emails.push(email);
+  //       }
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Test Prep")!= -1){
+  //         correct_test_prep_emails.push(email);
+  //       }
+  //       if (data[i][leadershipSubRoleCol].toString().indexOf("Program Director  Math")!= -1){
+  //         correct_math_emails.push(email);
+  //       }
+  //     }
+  //     non_lead_role = data[i][rolenonleadCol];
+  //     if (non_lead_role) {
+  //       if (non_lead_role.toString().indexOf('Math') != -1) {
+  //         correct_math_emails.push(email);
+  //       }
+  //       if (non_lead_role.toString().indexOf('W&CT') != -1) {
+  //         correct_wct_emails.push(email);
+  //       }
+  //       if (non_lead_role.toString().indexOf('Test Prep') != -1) {
+  //         correct_test_prep_emails.push(email);
+  //       }
+  //       if (non_lead_role.toString().indexOf('College Application Support') != -1) {
+  //         correct_senior_enrich_emails.push(email);
+  //       }
+  //       if (non_lead_role.toString().indexOf('Mentor') != -1) {
+          
+  //         if (data[i][studentYearAssociationCol]=='Senior'){
+  //           correct_senior_mentor_emails.push(email);
+  //         }
+  //         if (data[i][studentYearAssociationCol]=='Junior'){
+  //           correct_junior_mentor_emails.push(email);
+  //         }
+  //         if (data[i][studentYearAssociationCol]=='Sophomore'){
+  //           correct_soph_mentor_emails.push(email);
+  //         }
+  //       }
+  //     }       
+  //   }
+  // }
+
+  // // now lets audit each group
+  // console.log('num desired active emails' + correct_active_emails.length)
+  // console.log('num desired volunteer emails' + correct_volunteer_emails.length)
+  // console.log('num desired board emails' + correct_board_emails.length)
+  // console.log('num desired math emails' + correct_math_emails.length)
+  // console.log('num desired test prep emails' + correct_test_prep_emails.length)
+  // console.log('num desired wct emails ' + correct_wct_emails.length)
+  // auditGroup(active_group, correct_active_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(volunteer_group, correct_volunteer_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(board_group, correct_board_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(math_instructors_group, correct_math_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(testprep_instructors_group, correct_test_prep_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(wct_instructors_group, correct_wct_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(ec_group, correct_ec_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(senior_enrich_instructors_group, correct_senior_enrich_emails, dry_run);
+  // Utilities.sleep(1000)
+  // for (i = lowyear; i <= highyear; i++) {
+  //   auditGroup(student_groups[i], correct_student_group_emails[i], dry_run);
+  //   Utilities.sleep(1000)
+  // }
+  // auditGroup(mentor_groups[highyear-2], correct_senior_mentor_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(mentor_groups[highyear-1], correct_junior_mentor_emails, dry_run);
+  // Utilities.sleep(1000)
+  // auditGroup(mentor_groups[highyear], correct_soph_mentor_emails, dry_run);
+
 }
