@@ -16,7 +16,7 @@ Salesforce was the obvious choice for what this actively maintained source of tr
 This document outlines the steps required to deploy this synchronization system and is meant to provide a roadmap for other Minds Matter chapters that might want to replicate what Minds Matter Seattle has done. 
 
 # Deployment Steps
-1. Setup a gsuite domain with an admin account
+1. Setup a gsuite domain with an admin account, this is an account that will run the infrastructure, but is not tied to a particular individual in the organization, so that the system will keep working in the event that any individual leaves the org.
 beyond the scope of these docs]
 Enable directory sharing in the admin console. 
 https://support.google.com/a/answer/60218?hl=en
@@ -58,6 +58,7 @@ It should have the following columns
     Role (Non-Leadership)
     Leadership
     Leadership Sub-Role
+    Student Year Association
 
 We also put these fields to get them into gsuites
 Mailing Street	Mailing City	Mailing State/Province	Mailing Zip/Postal Code	Mailing Country		Mobile
