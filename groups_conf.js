@@ -1,8 +1,3 @@
-var groups_config_dict  = {
-    'mindsmatterseattle': seattle_groups_config,
-    'mindsmatterco': co_groups_config
-}
-
 var seattle_groups_config={
     "active": {
         "filters": [
@@ -381,4 +376,9 @@ var co_groups_config  = {
         "description":  "Minds Matter Mentors for Students Graduating 2023",
         "do_remove": false
     }
+}
+
+var groups_config_dict  = {
+    'mindsmatterseattle.org': seattle_groups_config,
+    'mindsmatterco.org': co_groups_config
 }
