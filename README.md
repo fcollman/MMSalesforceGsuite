@@ -135,8 +135,26 @@ Hit file>project properties > script properties
 
 TODO: make the spreadsheet creation and variable setting automated.
 
+14. configure desired groups
+    edit groups_conf.js to reflect the groups you want to have managed by the script.
+    each configuration follows a format
 
-14. Do a dry run of user creation.
+    "GROUP_NAME":{
+        "name": "the name of my group",
+        "description": "the description of my group",
+        "combination": "or" or "and" (controls whether all or any of the filters must be met),
+        "filters":[
+            one or more of these...
+            {
+                "column": "a column name from the salesforce report",
+                "condition": "equals" or "contains" depending on whether you want to search or match,
+                "value": "the value you are matching or searching for"
+            }
+        ]
+        "do_remove": true or false, whether you want the script to actively remove members that don't meet these criteria
+    }
+
+15. Do a dry run of user creation.
     Edit dry_run = false, to dry_run = true (~line 109) in script.
     Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
     Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
@@ -149,12 +167,12 @@ TODO: not all groups have users automatically added to yet.
     Fix missing group memberships, manually add appropriate volunteers to google classrooms if you are using this gsuite feature. Todo: make this automated and optional.
 
 
-15. Create your intranet sites using sites.google.com
-16. Grant editing permissions to site based upon group membership or individuals you desire.
+16. Create your intranet sites using sites.google.com
+17. Grant editing permissions to site based upon group membership or individuals you desire.
 Make visibility settings based upon organization wide permissions, or group membership.  We created different sites for “internal” (all of org), “ec” and “board”.
 This can be done in parallel with the above steps by volunteers and staff that have gsuite accounts.  Making admin the owner of these sites however will ensure that permissions can be transferred over time.
 
-17. Run a mail merge to notify new users of their accounts.
+18. Run a mail merge to notify new users of their accounts.
 Write a draft email template in the admin account gmail page introducing new users to their account.  Below is our example 
 
 ```
@@ -183,7 +201,7 @@ Write a draft email template in the admin account gmail page introducing new use
     Minds Matter Seattle Technology Team
 
 ```
-18. Identify the ID of the draft email you saved...
+19. Identify the ID of the draft email you saved...
 open the gscript project. 
 open MailMerge.gs
 run>run function>getDraftId
@@ -192,7 +210,29 @@ note the ID after the : of the subject line
 save this ID in the project properties:
 file>project properties>Script properties.  Set newAccountDraftID = IDNOTEDABOVE
 
-19. Setup Triggers
+20. Test run_merge
+    Add some data to the UserCreation spreadsheet
+    run the run_merge function
+    Those people should receive emails with the text filled in
+    and the rows should be marked "done" 
+
+21. Test auditActive
+    run the auditactive script
+    check the suspendedUsers spreadsheet to see who would be marked for suspension
+    if you have special accounts you want to be protected, add them to a script property
+    Name: protectedAccounts
+    Value (example): finance,marketing,admin,seniorzoom,sophomorezoom,juniorzoom
+22. Setup triggers
+    Go to script.google.com, select the project you created.
+    click vertical dots on right hand side of screen, next to Project Details
+    select Triggers
+    click Add Trigger button (bottom right corner)
+
+    Suggested triggers to add
+    auditActive (every day)
+    syncGoogleWithSalesforce_v2 (every 12 hours)
+    run_merge (every 12 hours)
+
 <!-- 
 Install a mail merge add-on on your “User Creation” spreadsheet.  We use “Yet another Mail Merge”.  Run the add-on to email users.  Free version limited to emailing 50 people per day, $40/year to make it more than that. 
 Prepare to deal with questions about logins and people losing login email or not receiving it due to types in email address, or not understanding how to add a gsuite account to their google login if they are using gmail for personal use. One helpful tip is that the admin console allows you to download a list of users and when they have last logged in.  We used this to setup a separate mail merge spreadsheet which emailed users at their personal logins if they hadn’t yet logged in.  I set this up by doing a merge between the login spreadsheet and the user creation spreadsheet in python. 
