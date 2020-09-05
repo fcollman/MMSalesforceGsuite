@@ -447,8 +447,8 @@ function suspendUsers() {
 }
 
 function syncGoogleWithSalesforce_v2() {
-  var dry_run = true;
-  do_remove_default=true;
+  var dry_run = false;
+  do_remove_default = true;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
   
   groupDict = {}
