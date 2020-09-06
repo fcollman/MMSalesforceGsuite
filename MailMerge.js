@@ -19,8 +19,9 @@ function getDraftId() {
 }
 
 function run_merge() {
-    var name = "Minds Matter of Seattle"
-    var from = 'admin@mindsmatterseattle.org'
+    var name = "Minds Matter"
+    var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+    var from = 'admin@' + domainname;
     var draftID = PropertiesService.getScriptProperties().getProperty('newAccountDraftID');
     var selectedDraft = GmailApp.getDraft(draftID)
     var selectedTemplate = selectedDraft.getMessage()
