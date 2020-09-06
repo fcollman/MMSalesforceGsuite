@@ -247,7 +247,7 @@ var co_groups_config  = {
             "description":  "Minds Matter of Colorado Board",
             "do_remove": true
         },
-    "staff":{
+    "lt":{
         "filters":[
             {
                 "column":"Contact Record Type",
@@ -257,6 +257,18 @@ var co_groups_config  = {
         ],
         "name": "Minds Matter Colorado Leadership",
         "description":  "Minds Matter Colorado Leadership",
+        "do_remove": true
+    },
+    "ec":{
+        "filters":[
+            {
+                "column":"Leadership",
+                "condition": "contains",
+                "value": "Chapter Executive Committee"
+            }
+        ],
+        "name": "Minds Matter Executive Council",
+        "description":  "Minds Matter Executive Council",
         "do_remove": true
     },
     "volunteers":{
@@ -374,6 +386,456 @@ var co_groups_config  = {
         "combination": "and",
         "name": "Minds Matter Mentors for Students Graduating 2023",
         "description":  "Minds Matter Mentors for Students Graduating 2023",
+        "do_remove": false
+    },
+    "gw-2021mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2021
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2021 at GW site",
+        "description":  "Minds Matter Students Graduating 2021 at GW site"
+    },
+    "gw-2022mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2022
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2022 at GW site",
+        "description":  "Minds Matter Students Graduating 2022 at GW site"
+    },
+    "gw-2023mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2023
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2023 at GW site",
+        "description":  "Minds Matter Students Graduating 2023 at GW site"
+    },
+    "gw-2021mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Senior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2021 at GW site",
+        "description":  "Minds Matter Mentors for Students Graduating 2021 at GW site",
+        "do_remove": false
+    },
+    "gw-2022mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Junior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2022 at GW site",
+        "description":  "Minds Matter Mentors for Students Graduating 2022 at GW site",
+        "do_remove": false
+    },
+    "gw-2023mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Sophomore"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - George Washington HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2023 at GW site",
+        "description":  "Minds Matter Mentors for Students Graduating 2023 at GW site",
+        "do_remove": false
+    },
+    "dmlk-2021mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2021
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2021 at MLK site",
+        "description":  "Minds Matter Students Graduating 2021 at MLK site"
+    },
+    "dmlk-2022mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2022
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2022 at MLK site",
+        "description":  "Minds Matter Students Graduating 2022 at MLK site"
+    },
+    "dmlk-2023mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2023
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2023 at MLK site",
+        "description":  "Minds Matter Students Graduating 2023 at MLK site"
+    },
+    "dmlk-2021mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Senior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2021 at MLK site",
+        "description":  "Minds Matter Mentors for Students Graduating 2021 at MLK site",
+        "do_remove": false
+    },
+    "dmlk-2022mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Junior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2022 at MLK site",
+        "description":  "Minds Matter Mentors for Students Graduating 2022 at MLK site",
+        "do_remove": false
+    },
+    "dmlk-2023mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Sophomore"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - MLK Early College"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2023 at MLK site",
+        "description":  "Minds Matter Mentors for Students Graduating 2023 at MLK site",
+        "do_remove": false
+    },
+    "west-2021mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2021
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2021 at West site",
+        "description":  "Minds Matter Students Graduating 2021 at West site"
+    },
+    "west-2022mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2022
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2022 at West site",
+        "description":  "Minds Matter Students Graduating 2022 at West site"
+    },
+    "west-2023mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2023
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2023 at West site",
+        "description":  "Minds Matter Students Graduating 2023 at West site"
+    },
+    "west-2021mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Senior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2021 at West site",
+        "description":  "Minds Matter Mentors for Students Graduating 2021 at West site",
+        "do_remove": false
+    },
+    "west-2022mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Junior"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2022 at West site",
+        "description":  "Minds Matter Mentors for Students Graduating 2022 at West site",
+        "do_remove": false
+    },
+    "west-2023mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Sophomore"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Denver - West HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2023 at West site",
+        "description":  "Minds Matter Mentors for Students Graduating 2023 at West site",
+        "do_remove": false
+    },
+    "harrison-2023mentees":{
+        "filters":[
+            {
+                "column":"Contact Record Type",
+                "condition": "equals",
+                "value": "Student"
+            },
+            {
+                "column":"Year",
+                "condition":"equals",
+                "value":2023
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Colorado Springs - Harrison HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Students Graduating 2023 at Harrison site",
+        "description":  "Minds Matter Students Graduating 2023 at Harrison site"
+    },
+    "harrison-2023mentors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Mentor"
+            },
+            {
+                "column":"Student Year Association",
+                "condition":"equals",
+                "value":"Sophomore"
+            },
+            {
+                "column":"Site (Colorado)",
+                "condition":"equals",
+                "value":"Colorado Springs - Harrison HS"
+            }
+        ],
+        "combination": "and",
+        "name": "Minds Matter Mentors for Students Graduating 2023 at Harrison site",
+        "description":  "Minds Matter Mentors for Students Graduating 2023 at Harrison site",
         "do_remove": false
     }
 }
