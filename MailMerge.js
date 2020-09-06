@@ -8,13 +8,13 @@ function processRow(rowData, mergeData) {
     mergeData['htmlBody'] = emailText;
     if(rowData.cc != undefined) mergeData.cc = rowData.cc;
     if(rowData.bcc != undefined) mergeData.bcc = rowData.bcc;
-    Logger.log(rowData)
+    console.log(rowData)
     GmailApp.sendEmail(rowData.privateemail, emailSubject, plainTextBody, mergeData);
 }
 function getDraftId() {
   var drafts=GmailApp.getDrafts();
   for(var i=0;i<drafts.length;i++) {
-    Logger.log(drafts[i].getId());
+    console.log(drafts[i].getId());
   }
 }
 
@@ -82,7 +82,7 @@ function run_merge() {
     }
 
     var objects = getRowsData(dataSheet, dataRange);
-    Logger.log(objects);
+    console.log(objects);
     for (var i = 0; i < objects.length; ++i) {
         var rowData = objects[i];
         if (rowData.mergeStatus == "") {
@@ -111,7 +111,7 @@ function fillInTemplateFromObject(template, data) {
     template = template.replace(/\{\{/g, '<<');
     template = template.replace(/\}\}/g, '>>');
     var email = template;
-    Logger.log(template)
+    console.log(template)
     template = template.replace(/">/g, "~");
     // Search for all the variables to be replaced, for instance <<Column name>>
     var templateVars = template.match(/<<[^\>]+>>/g);
@@ -123,7 +123,7 @@ function fillInTemplateFromObject(template, data) {
     else {
         var templateVars = template.match(/\$\%[^\%]+\%/g);
     }
-    Logger.log(templateVars)
+    console.log(templateVars)
     if (templateVars != null) {
         // Replace variables from the template with the actual values from the data object.
         // If no value is available, replace with the empty string.
