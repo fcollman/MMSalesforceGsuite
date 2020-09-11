@@ -17,6 +17,7 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
   var ss = SpreadsheetApp.openById(userID);
   var sheet = ss.getSheets()[0]
   var pwd = "MM2019" + firstName + generateRandom();
+  console.log('Creating User  %s, %s, %s', default_email, home_email, pwd)
 
   var user = {
     primaryEmail: default_email,
@@ -45,7 +46,6 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
   }
 
   //Logger.log('%s',user);
-  console.log('User created %s, %s, %s', user.primaryEmail, home_email, pwd)
 
 }
 
