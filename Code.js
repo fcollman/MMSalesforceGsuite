@@ -154,15 +154,38 @@ function listAllUsers() {
   return allUsers;
 }
 
-function testMe(){
+function setupGroups(){
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
-  var board_group = GroupsApp.getGroupByEmail("board@"+domainname);
-  users = board_group.getUsers();
-  for (i=0;i<users.length;i++){
-    user = users[i];
-    console.log(user)
+  var groups_config = groups_config_dict[domainname];
+  var pageToken;
+  var existing_groups=AdminDirectory.Groups.list({
+      domain: domainname,
+      maxResults: 200,
+      pageToken: pageToken
+    })
+  var existingGroupEmails = []
+  for (var group in existing_groups.groups){
+    existingGroupEmails.push(existing_groups.groups[group].email);
+  }
+  for (var group in groups_config){
+    if (existingGroupEmails.indexOf( group + "@" + domainname ) ==-1){
+      console.log("creating group: " + group + "@" + domainname);
+      AdminDirectory.Groups.insert({
+        email: group + "@" + domainname,
+        name: groups_config[group].name,
+        description: groups_config[group].description
+      });
+      var owner = {
+        email: "admin@" + domainname,
+        role: "OWNER",
+        delivery_settings: "NONE"
+      };
+      AdminDirectory.Members.insert(owner, group + "@" + domainname);
+    }
+    
   }
 }
+
 function syncGoogleWithSalesforce() {
   var dry_run = false;
   var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
