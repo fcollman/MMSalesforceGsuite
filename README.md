@@ -216,12 +216,12 @@ file>project properties>Script properties.  Set newAccountDraftID = IDNOTEDABOVE
     Those people should receive emails with the text filled in
     and the rows should be marked "done" 
 
-21. Test auditActive
+21. Add special accounts you want to be protected, add them to a script property
+    Name: protectedAccounts
+    Value (example): admin,finance,marketing,seniorzoom,sophomorezoom,juniorzoom
+    Test auditActive
     run the auditactive script
     check the suspendedUsers spreadsheet to see who would be marked for suspension
-    if you have special accounts you want to be protected, add them to a script property
-    Name: protectedAccounts
-    Value (example): finance,marketing,admin,seniorzoom,sophomorezoom,juniorzoom
 22. Setup triggers
     Go to script.google.com, select the project you created.
     click vertical dots on right hand side of screen, next to Project Details
