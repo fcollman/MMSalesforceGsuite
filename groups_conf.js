@@ -99,6 +99,37 @@ var seattle_groups_config={
         "description":  "Minds Matter Test Prep Instructors",
         "do_remove": false
     },
+    "senior-enrichment-instructors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Instructor  Test Prep"
+            },
+            {
+                "column":"Leadership Sub-Role",
+                "condition":"contains",
+                "value":"Program Director  Test Prep"
+            }
+        ],
+        "combination": "or",
+        "name": "Minds Matter Test Prep Instructors",
+        "description":  "Minds Matter Test Prep Instructors",
+        "do_remove": true
+    },
+    "summerprograms":{
+        "filters":[
+            {
+                "column":"Leadership Sub-Role",
+                "condition": "contains",
+                "value": "Director of Summer Programs"
+            }
+        ],
+        "combination": "or",
+        "name": "Minds Matter Summer Program Directors",
+        "description":  "Minds Matter Summer Program Directors",
+        "do_remove": true
+    },
     "students2021":{
         "filters":[
             {
