@@ -104,12 +104,17 @@ var seattle_groups_config={
             {
                 "column":"Role (Non-Leadership)",
                 "condition": "contains",
-                "value": "Instructor  Test Prep"
+                "value": "College Counselor"
+            },
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "College Application Support"
             },
             {
                 "column":"Leadership Sub-Role",
                 "condition":"contains",
-                "value":"Program Director  Test Prep"
+                "value":"College Counselor Lead"
             }
         ],
         "combination": "or",
@@ -128,6 +133,24 @@ var seattle_groups_config={
         "combination": "or",
         "name": "Minds Matter Summer Program Directors",
         "description":  "Minds Matter Summer Program Directors",
+        "do_remove": true
+    },
+    "math-instructors":{
+        "filters":[
+            {
+                "column":"Role (Non-Leadership)",
+                "condition": "contains",
+                "value": "Instructor  Math"
+            },
+            {
+                "column":"Leadership Sub-Role",
+                "condition":"contains",
+                "value":"Program Director  Math"
+            }
+        ],
+        "combination": "or",
+        "name": "Minds Matter Math Instructors",
+        "description":  "Minds Matter Math Instructors",
         "do_remove": true
     },
     "students2021":{
