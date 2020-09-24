@@ -41,8 +41,13 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
     }]
   };
   if (!dry_run) {
-    user = AdminDirectory.Users.insert(user);
-    sheet.appendRow([firstName, default_email, home_email, pwd]);
+    try{
+      user = AdminDirectory.Users.insert(user);
+      sheet.appendRow([firstName, default_email, home_email, pwd]);
+    }
+    catch (e){
+      console.log("User %s insert failed: " + e, user)
+    }
   }
 
   //Logger.log('%s',user);
@@ -74,6 +79,7 @@ function isUser(email) {
     return true;
   }
   catch (e) {
+    console.log('user not found reason: ' + e);
     return false;
   }
 }
