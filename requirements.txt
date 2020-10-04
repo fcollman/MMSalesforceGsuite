@@ -1,0 +1,4 @@
+simple_salesforce
+pandas
+requests
+numpy
