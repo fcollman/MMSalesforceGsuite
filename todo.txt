@@ -1,0 +1,4 @@
+turn dry run to property
+admin sdk documentation 
+document group creation and admin ownership
+automate group creation
