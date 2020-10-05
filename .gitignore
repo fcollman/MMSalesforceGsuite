@@ -2,3 +2,6 @@ DonationReports/
 .ipynb_checkpoints
 .vscode
 .DS_Store
+env.sh
+python_scripts/credentials.json
+python_scripts/token.pickle
