@@ -79,7 +79,7 @@ var seattle_groups_config={
         "combination": "or",
         "name": "Minds Matter Writing and Critical Thinking Instructors",
         "description":  "Minds Matter Writing and Critical Thinking Instructors",
-        "do_remove": false
+        "do_remove": true
     },
     "testprep-instructors":{
         "filters":[
@@ -97,7 +97,7 @@ var seattle_groups_config={
         "combination": "or",
         "name": "Minds Matter Test Prep Instructors",
         "description":  "Minds Matter Test Prep Instructors",
-        "do_remove": false
+        "do_remove": true
     },
     "senior-enrichment-instructors":{
         "filters":[
