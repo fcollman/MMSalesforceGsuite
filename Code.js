@@ -487,6 +487,7 @@ function syncGoogleWithSalesforce_v2() {
     google_group=GroupsApp.getGroupByEmail(group + "@" + domainname);
     groupDict[group]=google_group
     correctEmailDict[group]=[]
+    Utilities.sleep(1000)
   }
   
   var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
@@ -508,7 +509,7 @@ function syncGoogleWithSalesforce_v2() {
   
   data = rangeData.getValues();
 
-  for (i = 1; i < lastRow - 1; i++) {
+  for (i = 1; i < lastRow ; i++) {
     phone = data[i][columnDict["Phone"]];
     var email = data[i][columnDict["First Name"]].toLowerCase() + "." + data[i][columnDict["Last Name"]].toLowerCase() + "@" + domainname;
     email = email.replace(" ", ".");
