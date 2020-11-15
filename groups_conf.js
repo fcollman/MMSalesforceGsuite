@@ -257,6 +257,17 @@ var seattle_groups_config={
         "name": "Minds Matter Mentors for Students Graduating 2023",
         "description":  "Minds Matter Mentors for Students Graduating 2023",
         "do_remove": false
+    },
+    "newstudents":{
+        filters:[{
+            "column":"Leadership Sub-Role",
+            "condition":"contains",
+            "value":"Program Director  Test Prep"
+        }],
+        "combination": "and",
+        "name": "Minds Matter Seattle Student Recruiting",
+        "description":  "Email Alias for the Minds Matter Student Recruitement teams",
+        "do_remove": true
     }
 }
 
