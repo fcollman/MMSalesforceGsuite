@@ -128,3 +128,17 @@ function createHeaderIfNotFound_(value) {
     }
     return headers[0];
 }
+
+function createSpreadsheet(name, sheetName=null) {
+    // Create a new Google sheet and return the sheet ID.
+    // Arguments:
+    //  - name: name of the Google sheet
+    //  - sheetName: optional; set name of first sheet in Google sheet. 
+    //      default is "Sheet1"
+    var sheet = SpreadsheetApp.create(name);
+    if (sheetName) {
+        activeSheet = sheet.getActiveSheet();
+        activeSheet.setName(sheetName);
+    }
+    return sheet.getId();
+}
