@@ -262,7 +262,7 @@ var seattle_groups_config={
         filters:[{
             "column":"Leadership Sub-Role",
             "condition":"contains",
-            "value":"Program Director  Test Prep"
+            "value":"Director of Mentees"
         }],
         "combination": "and",
         "name": "Minds Matter Seattle Student Recruiting",
