@@ -181,6 +181,7 @@ function setupGroups(){
         name: groups_config[group].name,
         description: groups_config[group].description
       });
+      Utilities.sleep(1000);
       var owner = {
         email: "admin@" + domainname,
         role: "OWNER",
