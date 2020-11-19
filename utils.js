@@ -142,3 +142,25 @@ function createSpreadsheet(name, sheetName=null) {
     }
     return sheet.getId();
 }
+
+
+function setupSpreadsheets() {
+    // Checks for script properties 'newUserSheetID' and 'userSuspensionSheetID'
+    // If properties are not set, this function will:
+    //  1. Create google sheets "User Creation" and "UserSuspension"
+    //  2. Set script properties to the respective sheet IDs.
+    
+    var scriptProperties = PropertiesService.getScriptProperties();
+    var propertiesToCheck = {
+        "newUserSheetID": "User Creation",
+        "userSuspensionSheetID": "UserSuspension"
+    }
+    for (var key in propertiesToCheck) {
+        var prop = scriptProperties.getProperty(key);
+        var gsheetName = propertiesToCheck[key];
+        if (!prop) {
+            var sheetID = createSpreadsheet(gsheetName);
+            scriptProperties.setProperty(key, sheetID);
+        }
+    }
+}
