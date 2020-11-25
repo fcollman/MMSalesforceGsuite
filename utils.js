@@ -152,15 +152,17 @@ function setupSpreadsheets() {
     
     var scriptProperties = PropertiesService.getScriptProperties();
     var propertiesToCheck = {
-        "newUserSheetID": "User Creation",
-        "userSuspensionSheetID": "UserSuspension"
+        "newUserSheetID": ["User Creation", "Sheet1"],
+        "userSuspensionSheetID": ["UserSuspension", "SuspendedUsers"]
     }
     for (var key in propertiesToCheck) {
         var prop = scriptProperties.getProperty(key);
-        var gsheetName = propertiesToCheck[key];
+        var sheetProperties = propertiesToCheck[key];
+        var spreadsheetName=sheetProperties[0], gsheetName=sheetProperties[1];
         if (!prop) {
-            var sheetID = createSpreadsheet(gsheetName);
+            var sheetID = createSpreadsheet(spreadsheetName, sheetName=gsheetName);
             scriptProperties.setProperty(key, sheetID);
         }
     }
 }
+
