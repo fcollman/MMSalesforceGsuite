@@ -22,6 +22,7 @@ function createSpreadsheet(name, sheetName=null, columnNames=null) {
         var first_row = activeSheet.getRange(1, 1, 1, n_columns);
         first_row.setValues([columnNames]);
     }
+    Logger.log('Spreadshet URL: ' + sheet.getUrl());
     return sheet.getId();
 }
 
