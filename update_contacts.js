@@ -61,7 +61,7 @@ function parse_contact_sheet(currentUsersSheet) {
 
 }
 
-function create_prefilled_link(usersSheet, ) {
+function create_prefilled_links(usersSheet) {
     // Parses a spreadsheet of current contacts and creates
     // a pre-filled Google form for each contact.
     // Form links will be emailed to contacts using MailMerge.js 
