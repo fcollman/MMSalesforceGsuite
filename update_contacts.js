@@ -6,27 +6,32 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-function create_form(data, formName, description=null) {
-    // Creates a custom form pre-filled with fields from data
+
+// Create Form object (to be prefilled with contact info)
+function create_update_contacts_form() {
+    // Creates the contact info update form. Returns Google form object
+
+    var formTitle = "Contact Info Update Form"
+    var formDescription = "Form for updating your contact information with Minds Matter"
+    var contactInfoForm = FormApp.create(formTitle);
+    contactInfoForm.setDescription(formDescription);
+    return contactInfoForm
+}
+
+function create_form_response(data, form) {
+    // Pre-fills a form pre-filled with fields from data. Fields in form must match keys of data.
     // Arguments:
-    //  - data (dict): dictionary of key, value pairs that will form the fields; for updating contacts, 
-    //      required keys included "First Name", "Last Name", "Mailing Street", "Mailing State/Province",
-    //      "Mailing Zip/Postal Code", "Mobile",
-    //      "Phone", "Email", "Employer"
-    //  - formName (str): name to give Google form
-    //  - description (optional): description of the form
+    //  - data (dict): dictionary of key, value pairs that will be used to prefill form fields; 
+    //      for updating contacts, required keys included "First Name", "Last Name", "Mailing Street", 
+    //      "Mailing State/Province", "Mailing Zip/Postal Code", "Mobile", "Phone", "Email", "Employer"
+    //  - form (Form object): a Google Form object returned from the FormApp.create() function
     //
     // Returns:
-    //  - Google form link url 
+    //  - url to prefilled Google form
     
-    var form = FormApp.create(formName);
-    if (description) {
-        form.setDescription(description);
-    }
-
     var formResponse = form.createResponse();
     for (var key in data) {
-        // TODO: Add field descriptions and specify which ones are required*
+        // TODO: Add field descriptions and specify which ones are required
         var item = form.addTextItem()
         item.setTitle(key)
         var response = item.createResponse(data[key]);
@@ -56,18 +61,17 @@ function parse_contact_sheet(currentUsersSheet) {
 
 }
 
-function create_update_forms(usersSheet) {
+function create_prefilled_link(usersSheet, ) {
     // Parses a spreadsheet of current contacts and creates
     // a pre-filled Google form for each contact.
     // Form links will be emailed to contacts using MailMerge.js 
 
+    var updateContactsForm = create_update_contacts_form()
     var contacts = parse_contact_sheet("SEA Current Contacts")
-    var formTitle = "Contact Info Update Form"
-    var formDescription = "Form for updating your contact information with Minds Matter"
 
     // Iterate through array of user data and create prefilled form for each one
     for (var contact in contacts) {
-        var prefilledForm = create_form(contact, formTitle, formDescription)
+        var prefilledFormLink = create_form_response(contact, updateContactsForm)
         // write out link to new sheet
         // maybe write out form id too...
     }
