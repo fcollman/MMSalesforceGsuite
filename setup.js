@@ -5,7 +5,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-function createSpreadsheet(name, sheetName=null, columnNames=null) {
+function createSpreadsheet(name, sheetName, columnNames) {
     // Create a new Google sheet and return the sheet ID.
     // Arguments:
     //  - name: name of the Google sheet
@@ -13,16 +13,16 @@ function createSpreadsheet(name, sheetName=null, columnNames=null) {
     //      default is null.
     //  - columnNames (array): list of column names to set in first row of sheet.
     var sheet = SpreadsheetApp.create(name);
-    if (sheetName) {
-        activeSheet = sheet.getActiveSheet();
-        activeSheet.setName(sheetName);
-    }
-    if (columnNames) {
-        var n_columns = columnNames.length;
-        var first_row = activeSheet.getRange(1, 1, 1, n_columns);
-        first_row.setValues([columnNames]);
-    }
+    
+    activeSheet = sheet.getActiveSheet();
+    activeSheet.setName(sheetName);
+
+    
+    var n_columns = columnNames.length;
+    var first_row = activeSheet.getRange(1, 1, 1, n_columns);
+    first_row.setValues([columnNames]);
     Logger.log('Spreadshet URL: ' + sheet.getUrl());
+    
     return sheet.getId();
 }
 
