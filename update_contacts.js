@@ -6,15 +6,60 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
+SALESFORCE_CONTACT_FORM_CONFIG={
+    "First Name":{
+        "required": true,
+        "description": "",
+    },
+    "Last Name":
+    {
+        "required": true,
+        "description": "",
+    },
+    "Mailing Street":{
+        "required": true,
+        "description": "",
+    },
+    "Mailing State/Province":{
+        "required": true,
+        "description": "",
+    },
+    "Mailing Zip/Postal Code":{
+        "required": true,
+        "description": "",
+    },
+    "Mobile":{
+        "required": false,
+        "description": "place cell phone contact here",
+    },
+    "Phone":{
+        "required": false,
+        "description": "leave blank if no landline available",
+    },
+    "Email":{
+        "required": true,
+        "description": "preferred non-minds matter email contact",
+    },
+    "Employer":{
+        "required": false,
+        "description": "for volunteers only",
+    }
+};
 // Create Form object (to be prefilled with contact info)
 function create_update_contacts_form() {
     // Creates the contact info update form. Returns Google form object
-
+    // TODO: Add field descriptions and specify which ones are required
     var formTitle = "Contact Info Update Form"
     var formDescription = "Form for updating your contact information with Minds Matter"
     var contactInfoForm = FormApp.create(formTitle);
     contactInfoForm.setDescription(formDescription);
+    for (var key in SALESFORCE_CONTACT_FORM_CONFIG.keys()) {
+        var item_config = SALESFORCE_CONTACT_FORM_CONFIG[key];
+        var item = contactInfoForm.addTextItem();
+        item.setHelpText(item_config['description']);
+        item.setRequired(item_config['required']);
+        item.setTitle(key);
+    }
     return contactInfoForm
 }
 
@@ -30,12 +75,17 @@ function create_form_response(data, form) {
     //  - url to prefilled Google form
     
     var formResponse = form.createResponse();
+    var items = form.getItems();
+    var title_dict = {};
+    for (var item in items){
+        title_dict[item.getTitle()]=item;
+    }
     for (var key in data) {
-        // TODO: Add field descriptions and specify which ones are required
-        var item = form.addTextItem()
-        item.setTitle(key)
-        var response = item.createResponse(data[key]);
-        formResponse.withItemResponse(response)
+        
+        // var item = form.addTextItem()
+        // item.setTitle(key)
+        var response = title_dict[key].createResponse(data[key]);
+        formResponse.withItemResponse(response);
     }
     var url = formResponse.withItemResponse(response).toPrefilledUrl();
     Logger.log('Form URL: ' + url);
