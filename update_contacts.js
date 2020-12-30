@@ -161,12 +161,16 @@ function create_prefilled_links() {
         var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4);
         mailmerge_sheetID = mailmerge_ss.getId();
         PropertiesService.setProperty('contactMailMergeSheetID', mailmerge_sheetID);
+        mailmerge_ss.appendRow(["FirstName", "email", "form_link"]);
     }
     else {
         var mailmerge_ss = SpreadsheetApp.openById(mailmerge_sheetID);
+        if(mailmerge_ss.getMaxRows()>1){   
+            mailmerge_ss.deleteRows(2, mailmerge_ss.getMaxRows()-1)
+          }
     }
 
-    mailmerge_ss.appendRow(["FirstName", "email", "form_link"]);
+    
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
 
     // Iterate through array of user data and create prefilled form for each one
