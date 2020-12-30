@@ -149,18 +149,28 @@ function parse_contact_sheet(spreadsheet) {
     return contacts
 }
 
-function create_prefilled_links(usersSheet) {
+function create_prefilled_links() {
     // Parses a spreadsheet of current contacts and creates
     // a pre-filled Google form for each contact.
     // Form links will be emailed to contacts using MailMerge.js 
-
+    
     var updateContactsForm = create_update_contacts_form()
-    var contacts = parse_contact_sheet("SEA Current Contacts")
+    var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
+    var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
+
+    var contacts = parse_contact_sheet(ss);
+    var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4)
+    mailmerge_ss.appendRow(["FirstName", "email", "form_link"]);
+    var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
 
     // Iterate through array of user data and create prefilled form for each one
     for (var contact in contacts) {
         var prefilledFormLink = create_form_response(contact, updateContactsForm)
-        // write out link to new sheet
-        // maybe write out form id too...
+        var email = contact["First Name"].toLowerCase() + "." + contact["Last Name"].toLowerCase() + "@" + domainname;
+        email = email.replace(" ", ".");
+        email = email.replace(" ", ".");
+        mailmerge_ss.appendRow([contact["First  Name"],
+                                email,
+                                prefilledFormLink]);
     }
 }
