@@ -78,13 +78,14 @@ function create_form_response(data, form) {
     var items = form.getItems();
     var title_dict = {};
     for (var item in items){
-        title_dict[item.getTitle()]=item;
+        title_dict[items[item].getTitle()]=items[item];
     }
     for (var key in data) {
         
         // var item = form.addTextItem()
         // item.setTitle(key)
-        var response = title_dict[key].createResponse(data[key]);
+        var item = title_dict[key]
+        var response = item.asTextItem().createResponse(data[key]);
         formResponse.withItemResponse(response);
     }
     var url = formResponse.withItemResponse(response).toPrefilledUrl();
@@ -152,12 +153,13 @@ function create_prefilled_links() {
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
 
     // Iterate through array of user data and create prefilled form for each one
-    for (var contact in contacts) {
+    for (var idx in contacts) {
+        var contact = contacts[idx];
         var prefilledFormLink = create_form_response(contact, updateContactsForm)
         var email = contact["First Name"].toLowerCase() + "." + contact["Last Name"].toLowerCase() + "@" + domainname;
         email = email.replace(" ", ".");
         email = email.replace(" ", ".");
-        mailmerge_ss.appendRow([contact["First  Name"],
+        mailmerge_ss.appendRow([contact["First Name"],
                                 email,
                                 prefilledFormLink]);
     }
