@@ -66,7 +66,7 @@ function create_update_contacts_form() {
         PropertiesService.setProperty('contactUpdateFormId', formID);
     }
     else {
-        contactInfoForm=FormApp.getForm(formID);
+        contactInfoForm=FormApp.openById(formID);
     }
     return contactInfoForm;
 }
@@ -156,7 +156,16 @@ function create_prefilled_links() {
     var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
 
     var contacts = parse_contact_sheet(ss);
-    var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4)
+    var mailmerge_sheetID = PropertiesService.getScriptProperties().getProperty('contactMailMergeSheetID');
+    if (mailmerge_sheetID==null){
+        var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4);
+        mailmerge_sheetID = mailmerge_ss.getId();
+        PropertiesService.setProperty('contactMailMergeSheetID', mailmerge_sheetID);
+    }
+    else {
+        var mailmerge_ss = SpreadsheetApp.openById(mailmerge_sheetID);
+    }
+
     mailmerge_ss.appendRow(["FirstName", "email", "form_link"]);
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
 
