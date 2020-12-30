@@ -123,17 +123,7 @@ function parse_contact_sheet(spreadsheet) {
         columnDict[values[0][i]]=i;
     }
 
-    fieldsToPull = [
-        "First Name",
-        "Last Name",
-        "Mailing Street",
-        "Mailing State/Province",
-        "Mailing Zip/Postal Code",
-        "Mobile",
-        "Phone",
-        "Email",
-        "Employer"
-    ]
+    fieldsToPull = SALESFORCE_CONTACT_FORM_CONFIG.keys()
 
     var contacts = [];
     for (i = 1; i < lastRow; i++) {
