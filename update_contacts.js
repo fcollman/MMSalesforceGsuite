@@ -53,7 +53,7 @@ function create_update_contacts_form() {
     var formDescription = "Form for updating your contact information with Minds Matter"
     var contactInfoForm = FormApp.create(formTitle);
     contactInfoForm.setDescription(formDescription);
-    for (var key in SALESFORCE_CONTACT_FORM_CONFIG.keys()) {
+    for (var key in SALESFORCE_CONTACT_FORM_CONFIG) {
         var item_config = SALESFORCE_CONTACT_FORM_CONFIG[key];
         var item = contactInfoForm.addTextItem();
         item.setHelpText(item_config['description']);
@@ -123,12 +123,10 @@ function parse_contact_sheet(spreadsheet) {
         columnDict[values[0][i]]=i;
     }
 
-    fieldsToPull = SALESFORCE_CONTACT_FORM_CONFIG.keys()
-
     var contacts = [];
     for (i = 1; i < lastRow; i++) {
         var contact = {};
-        for (var field in fieldsToPull) {
+        for (var field in SALESFORCE_CONTACT_FORM_CONFIG) {
             colIndex = columnDict[field]            
             contact[field] = values[i][colIndex]
         }
