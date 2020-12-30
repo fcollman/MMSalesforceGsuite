@@ -49,7 +49,8 @@ SALESFORCE_CONTACT_FORM_CONFIG={
 function create_update_contacts_form() {
     // Creates the contact info update form. Returns Google form object
     // TODO: Add field descriptions and specify which ones are required
-    var formID = PropertiesService.getScriptProperties().getProperty('contactUpdateFormId');
+    var scriptProps = PropertiesService.getScriptProperties();
+    var formID = scriptProps.getProperty('contactUpdateFormId');
     if (formID == null){
         var formTitle = "Contact Info Update Form"
         var formDescription = "Form for updating your contact information with Minds Matter"
@@ -63,7 +64,7 @@ function create_update_contacts_form() {
             item.setTitle(key);
         }
         formID = contactInfoForm.getId();
-        PropertiesService.setProperty('contactUpdateFormId', formID);
+        scriptProps.setProperty('contactUpdateFormId', formID);
     }
     else {
         contactInfoForm=FormApp.openById(formID);
@@ -150,9 +151,9 @@ function create_prefilled_links() {
     // Parses a spreadsheet of current contacts and creates
     // a pre-filled Google form for each contact.
     // Form links will be emailed to contacts using MailMerge.js 
-    
+    var scriptProps = PropertiesService.getScriptProperties();
     var updateContactsForm = create_update_contacts_form()
-    var salesforceSpreadSheetID = PropertiesService.getScriptProperties().getProperty('salesforceSpreadSheetID');
+    var salesforceSpreadSheetID = scriptProps.getProperty('salesforceSpreadSheetID');
     var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
 
     var contacts = parse_contact_sheet(ss);
@@ -160,7 +161,7 @@ function create_prefilled_links() {
     if (mailmerge_sheetID==null){
         var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4);
         mailmerge_sheetID = mailmerge_ss.getId();
-        PropertiesService.setProperty('contactMailMergeSheetID', mailmerge_sheetID);
+        scriptProps.setProperty('contactMailMergeSheetID', mailmerge_sheetID);
         mailmerge_ss.appendRow(["FirstName", "email", "form_link"]);
     }
     else {
@@ -169,9 +170,8 @@ function create_prefilled_links() {
             mailmerge_ss.deleteRows(2, mailmerge_ss.getMaxRows()-1)
           }
     }
-
     
-    var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+    var domainname = scriptProps.getProperty('domainname');
 
     // Iterate through array of user data and create prefilled form for each one
     for (var idx in contacts) {
