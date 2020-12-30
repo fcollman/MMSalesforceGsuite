@@ -166,8 +166,9 @@ function create_prefilled_links() {
     }
     else {
         var mailmerge_ss = SpreadsheetApp.openById(mailmerge_sheetID);
-        if(mailmerge_ss.getMaxRows()>1){   
-            mailmerge_ss.deleteRows(2, mailmerge_ss.getMaxRows()-1)
+        var activeSheet = mailmerge_ss.getActiveSheet();
+        if(activeSheet.getMaxRows()>1){   
+            activeSheet.deleteRows(2,activeSheet.getMaxRows()-1)
           }
     }
     
