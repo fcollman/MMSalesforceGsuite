@@ -49,18 +49,26 @@ SALESFORCE_CONTACT_FORM_CONFIG={
 function create_update_contacts_form() {
     // Creates the contact info update form. Returns Google form object
     // TODO: Add field descriptions and specify which ones are required
-    var formTitle = "Contact Info Update Form"
-    var formDescription = "Form for updating your contact information with Minds Matter"
-    var contactInfoForm = FormApp.create(formTitle);
-    contactInfoForm.setDescription(formDescription);
-    for (var key in SALESFORCE_CONTACT_FORM_CONFIG) {
-        var item_config = SALESFORCE_CONTACT_FORM_CONFIG[key];
-        var item = contactInfoForm.addTextItem();
-        item.setHelpText(item_config['description']);
-        item.setRequired(item_config['required']);
-        item.setTitle(key);
+    var formID = PropertiesService.getScriptProperties().getProperty('contactUpdateFormId');
+    if (formID == null){
+        var formTitle = "Contact Info Update Form"
+        var formDescription = "Form for updating your contact information with Minds Matter"
+        var contactInfoForm = FormApp.create(formTitle);
+        contactInfoForm.setDescription(formDescription);
+        for (var key in SALESFORCE_CONTACT_FORM_CONFIG) {
+            var item_config = SALESFORCE_CONTACT_FORM_CONFIG[key];
+            var item = contactInfoForm.addTextItem();
+            item.setHelpText(item_config['description']);
+            item.setRequired(item_config['required']);
+            item.setTitle(key);
+        }
+        formID = contactInfoForm.getId();
+        PropertiesService.setProperty('contactUpdateFormId', formID);
     }
-    return contactInfoForm
+    else {
+        contactInfoForm=FormApp.getForm(formID);
+    }
+    return contactInfoForm;
 }
 
 function create_form_response(data, form) {
