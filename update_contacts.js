@@ -93,7 +93,7 @@ function create_form_response(data, form) {
     return url
 }
 
-function parse_contact_sheet(currentUsersSheet) {
+function parse_contact_sheet(spreadsheet) {
     // Reads a spreadsheet of Current Contacts and returns
     // an array of dictionaries with key, value pairs for 
     // each required field in the "Contact Info Update Form" 
@@ -109,6 +109,44 @@ function parse_contact_sheet(currentUsersSheet) {
     //  - Email
     //  - Employer 
 
+    usersSheet = spreadsheet.getActiveSheet();
+    range = usersSheet.getDataRange();
+    values = range.getValues(); 
+    
+    // Get num rows and columns
+    lastRow = range.getLastRow();
+    lastColumn = range.getLastColumn();
+
+    // Map column names to column index 
+    var columnDict = {}
+    for (i = 0; i < lastColumn; i++) {
+        columnDict[values[0][i]]=i;
+    }
+
+    fieldsToPull = [
+        "First Name",
+        "Last Name",
+        "Mailing Street",
+        "Mailing State/Province",
+        "Mailing Zip/Postal Code",
+        "Mobile",
+        "Phone",
+        "Email",
+        "Employer"
+    ]
+
+    var contacts = [];
+    for (i = 1; i < lastRow; i++) {
+        var contact = {};
+        for (var field in fieldsToPull) {
+            colIndex = columnDict[field]            
+            contact[field] = values[i][colIndex]
+        }
+
+        Logger.log(contact);
+        contacts.push(contact); 
+    }
+    return contacts
 }
 
 function create_prefilled_links(usersSheet) {
