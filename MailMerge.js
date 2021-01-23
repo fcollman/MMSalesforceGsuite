@@ -1,5 +1,5 @@
-var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
-var ss = SpreadsheetApp.openById(userID);
+var newuserSheetID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
+var ss = SpreadsheetApp.openById(newuserSheetID);
 
 function processRow(rowData, mergeData) {
     var emailText = fillInTemplateFromObject(mergeData.template, rowData);
