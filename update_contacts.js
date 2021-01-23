@@ -186,3 +186,15 @@ function create_prefilled_links() {
                                 prefilledFormLink]);
     }
 }
+
+function update_salesforce_contact_info(){
+
+    var scriptProps = PropertiesService.getScriptProperties();
+    var updateContactsForm = create_update_contacts_form()
+    var salesforceSpreadSheetID = scriptProps.getProperty('salesforceSpreadSheetID');
+    var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
+    
+    var responseID = updateContactsForm.getDestinationId();
+    var responsess = SpreadsheetApp.openById(salesforceSpreadSheetID);
+    
+}
