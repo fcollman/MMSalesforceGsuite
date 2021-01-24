@@ -294,6 +294,7 @@ function syncGoogleWithSalesforce() {
           email,
           data[i][emailCol],
           data[i][phoneCol],
+          data[i][contactIdCol],
           dry_run);
         is_user=true;
       }
@@ -337,6 +338,7 @@ function syncGoogleWithSalesforce() {
             email,
             data[i][emailCol],
             data[i][phoneCol],
+            data[i][contactIdCol],
             dry_run);
             is_user=true;
         }
