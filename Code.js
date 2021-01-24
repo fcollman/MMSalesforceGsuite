@@ -12,7 +12,7 @@ function generateRandom() {
   return text;
 }
 
-function addUser(firstName, lastName, default_email, home_email, phone, dry_run) {
+function addUser(firstName, lastName, default_email, home_email, phone, sfid, dry_run) {
   var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
   var ss = SpreadsheetApp.openById(userID);
   var sheet = ss.getSheets()[0]
@@ -28,6 +28,13 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
     // Generate a random password string.
     password: pwd,
     changePasswordAtNextLogin: true,
+    externalIDs:
+    [
+      {
+        type: "account",
+        value: sfid
+      }
+    ],
     phones: [
       {
         primary: true,
@@ -234,6 +241,7 @@ function syncGoogleWithSalesforce() {
   var firstNameCol = -1;
   var lastNameCol = -1;
   var phoneCol = -1;
+  var contactIdCol = -1;
   var studentYearAssociationCol = -1;
   var leadershipSubRoleCol = -1;
 
@@ -247,6 +255,7 @@ function syncGoogleWithSalesforce() {
     else if (rangeValues[0][i] === 'First Name') firstNameCol = i;
     else if (rangeValues[0][i] === 'Last Name') lastNameCol = i;
     else if (rangeValues[0][i] === 'Mobile') phoneCol = i;
+    else if (rangeValues[0][i] === 'Contact ID') contactIdCol = i;
     else if (rangeValues[0][i] === 'Student Year Association') studentYearAssociationCol = i;
   }
 
@@ -268,6 +277,7 @@ function syncGoogleWithSalesforce() {
           email,
           data[i][emailCol],
           data[i][phoneCol],
+          data[i][contactIdCol],
           dry_run);
           is_user=true;
       }
