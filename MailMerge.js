@@ -1,6 +1,3 @@
-var newuserSheetID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
-var ss = SpreadsheetApp.openById(newuserSheetID);
-
 function processRow(rowData, mergeData) {
     var emailText = fillInTemplateFromObject(mergeData.template, rowData);
     var emailSubject = fillInTemplateFromObject(mergeData.subject, rowData);
@@ -18,11 +15,10 @@ function getDraftId() {
   }
 }
 
-function run_merge() {
+function run_mail_merge(ss, draftID){
     var name = "Minds Matter"
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
     var from = 'admin@' + domainname;
-    var draftID = PropertiesService.getScriptProperties().getProperty('newAccountDraftID');
     var selectedDraft = GmailApp.getDraft(draftID)
     var selectedTemplate = selectedDraft.getMessage()
     var dataSheet = ss.getActiveSheet();
@@ -98,6 +94,12 @@ function run_merge() {
     }
 }
 
+function run_merge() {
+    var draftID = PropertiesService.getScriptProperties().getProperty('newAccountDraftID');
+    var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
+    var ss = SpreadsheetApp.openById(userID);
+    run_mail_merge(ss, draftID);
+}
 
 // Replaces markers in a template string with values define in a JavaScript data object.
 // Arguments:
