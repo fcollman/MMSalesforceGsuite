@@ -1,4 +1,3 @@
-
 function processRow(rowData, mergeData) {
     var emailText = fillInTemplateFromObject(mergeData.template, rowData);
     var emailSubject = fillInTemplateFromObject(mergeData.subject, rowData);
