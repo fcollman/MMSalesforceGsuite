@@ -6,6 +6,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// The config below defines the questions that constitute 
+// the Google update contact info form.
+// TODO: Add field descriptions and specify which ones are required
 SALESFORCE_CONTACT_FORM_CONFIG={
   "First Name":{
       "required": true,
@@ -55,8 +58,9 @@ SALESFORCE_CONTACT_FORM_CONFIG={
 };
 // Create Form object (to be prefilled with contact info)
 function create_update_contacts_form() {
-  // Creates the contact info update form. Returns Google form object
-  // TODO: Add field descriptions and specify which ones are required
+  // Reads the SALESFORCE_CONTACT_FORM_CONFIG and creates 
+  // the contact info update form. Returns a Google form object
+
   var scriptProps = PropertiesService.getScriptProperties();
   var formID = scriptProps.getProperty('contactUpdateFormId');
   Logger.log(formID);
@@ -82,11 +86,10 @@ function create_update_contacts_form() {
 }
 
 function create_form_response(data, form) {
-  // Pre-fills a form pre-filled with fields from data. Fields in form must match keys of data.
+  // Pre-fills a form with key,value pairs in data. keys of items in data must
+  // match fields in form.
   // Arguments:
-  //  - data (dict): dictionary of key, value pairs that will be used to prefill form fields; 
-  //      for updating contacts, required keys included "First Name", "Last Name", "Mailing Street", 
-  //      "Mailing State/Province", "Mailing Zip/Postal Code", "Mobile", "Phone", "Email", "Employer"
+  //  - data (dict): dictionary of key, value pairs that will be used to prefill form fields
   //  - form (Form object): a Google Form object returned from the FormApp.create() function
   //
   // Returns:
@@ -113,11 +116,12 @@ function create_form_response(data, form) {
 }
 
 function parse_contact_sheet(spreadsheet) {
-  // Reads a spreadsheet of Current Contacts and returns
-  // an array of dictionaries with key, value pairs for 
-  // each required field in the "Contact Info Update Form" 
-
-  // Required Fields:
+  // Reads a spreadsheet of contacts and returns
+  // an array of dictionaries. Each item in the array represents one row
+  // of the spreadsheet parsed into a dictionary. key, value pairs of dictionary 
+  // map to column name, value for that row.
+  //
+  // Note: For Update contact info form, the following fields are required:
   //  - First Name
   //  - Last Name
   //  - Mailing Street
@@ -157,15 +161,28 @@ function parse_contact_sheet(spreadsheet) {
 }
 
 function create_prefilled_links() {
-  // Parses a spreadsheet of current contacts and creates
-  // a pre-filled Google form for each contact.
-  // Form links will be emailed to contacts using MailMerge.js 
+  // This function performs three steps:
+  //  1. Parses a spreadsheet of current contacts
+  //  2. Creates the Contact Info Update Form
+  //  3. Creates pre-filled Google form links for contacts parse
+  //     from step 1.
+  //  4. Dumps FirstName, email, and pre-filled form_link
+  //     in the "Contact Update MailMerge" sheet 
+    
   var scriptProps = PropertiesService.getScriptProperties();
-  var updateContactsForm = create_update_contacts_form()
+
+  // Create form
+  var updateContactsForm = create_update_contacts_form();
+
+  // Load current contacts spreadsheet
   var salesforceSpreadSheetID = scriptProps.getProperty('salesforceSpreadSheetID');
   var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
-
+  
+  // parse contacts spreadsheet 
   var contacts = parse_contact_sheet(ss);
+  
+  // Load or create a new spreadsheet containing pre-filled links
+  // This spreadsheet will be later used to run mail merge
   var mailmerge_sheetID = PropertiesService.getScriptProperties().getProperty('contactMailMergeSheetID');
   if (mailmerge_sheetID==null){
       var mailmerge_ss = SpreadsheetApp.create("Contact Update MailMerge", 500, 4);
@@ -191,106 +208,108 @@ function create_prefilled_links() {
       var email = contact["First Name"].toLowerCase() + "." + contact["Last Name"].toLowerCase() + "@" + domainname;
       email = email.replace(" ", ".");
       email = email.replace(" ", ".");
+      // add data to mail merge spreadsheet
       mailmerge_ss.appendRow([contact["First Name"],
                               email,
                               prefilledFormLink]);
   }
 }
+
 function add_salesforce_ID_to_users(){
-var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
-var scriptProps = PropertiesService.getScriptProperties();
-var salesforceSpreadSheetID = scriptProps.getProperty('salesforceSpreadSheetID');
-var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
-var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
-var sheet = ss.getSheetByName(salesforceSheetName);
-var rangeData = sheet.getDataRange();
-var lastColumn = rangeData.getLastColumn();
-var lastRow = rangeData.getLastRow();
-var searchRange = sheet.getRange(1, 1, 1, lastColumn);
-var rangeValues = searchRange.getValues();
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var scriptProps = PropertiesService.getScriptProperties();
+  var salesforceSpreadSheetID = scriptProps.getProperty('salesforceSpreadSheetID');
+  var ss = SpreadsheetApp.openById(salesforceSpreadSheetID);
+  var salesforceSheetName = PropertiesService.getScriptProperties().getProperty('salesforceSheetName');
+  var sheet = ss.getSheetByName(salesforceSheetName);
+  var rangeData = sheet.getDataRange();
+  var lastColumn = rangeData.getLastColumn();
+  var lastRow = rangeData.getLastRow();
+  var searchRange = sheet.getRange(1, 1, 1, lastColumn);
+  var rangeValues = searchRange.getValues();
 
-var columnDict = {}
-for (i = 0; i < lastColumn; i++) {
-  columnDict[rangeValues[0][i]]=i;
-}
-
-data = rangeData.getValues();
-for (i = 1; i < lastRow; i++) {
-  var email = data[i][columnDict['First Name']].toLowerCase() + "." + data[i][columnDict['Last Name']].toLowerCase() + "@" + domainname;
-  email = email.replace(" ", ".");
-  email = email.replace(" ", ".");
-
-  try{
-    var user = AdminDirectory.Users.get(email);
+  var columnDict = {}
+  for (i = 0; i < lastColumn; i++) {
+    columnDict[rangeValues[0][i]]=i;
   }
-  catch (e){
-    Logger.log("email not found " + email);
-    var user = null;
-  }
-  if (user != null){
-    var exIDs = user.getExternalIds();
-    var salesforceID = data[i][columnDict["Contact ID"]];
-    if (exIDs == null){
-        user.setExternalIds([{
-             "value":salesforceID,
-             "type":"account"
-           }]);
-        AdminDirectory.Users.update(user,  email);
+
+  data = rangeData.getValues();
+  for (i = 1; i < lastRow; i++) {
+    var email = data[i][columnDict['First Name']].toLowerCase() + "." + data[i][columnDict['Last Name']].toLowerCase() + "@" + domainname;
+    email = email.replace(" ", ".");
+    email = email.replace(" ", ".");
+
+    try{
+      var user = AdminDirectory.Users.get(email);
+    }
+    catch (e){
+      Logger.log("email not found " + email);
+      var user = null;
+    }
+    if (user != null){
+      var exIDs = user.getExternalIds();
+      var salesforceID = data[i][columnDict["Contact ID"]];
+      if (exIDs == null){
+          user.setExternalIds([{
+              "value":salesforceID,
+              "type":"account"
+            }]);
+          AdminDirectory.Users.update(user,  email);
+      }
     }
   }
-}
 
 }
 
 function SalesforceLogin(){
-var sf_version = "42.0";
-var instanceUrl = "https://na88.lightning.force.com/";
-var scriptProps = PropertiesService.getScriptProperties();
-var token = scriptProps.getProperty('sfAuthToken')
-var soap_url = 'https://login.salesforce.com/services/Soap/u/' + sf_version;
-var client_id = 'RestForce'
-var username = scriptProps.getProperty('sfUsername'); 
-var password = scriptProps.getProperty('sfPassword');
-login_soap_request_body = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\
-      <env:Envelope\
-              xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" \
-              xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
-              xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"\
-              xmlns:urn=\"urn:partner.soap.sforce.com\">\
-          <env:Header>\
-              <urn:CallOptions>\
-                  <urn:client>" + client_id + "</urn:client>\
-                  <urn:defaultNamespace>sf</urn:defaultNamespace>\
-              </urn:CallOptions>\
-          </env:Header>\
-          <env:Body>\
-              <n1:login xmlns:n1=\"urn:partner.soap.sforce.com\">\
-                  <n1:username>" + username + "</n1:username>\
-                  <n1:password>"+password+token+"</n1:password>\
-              </n1:login>\
-          </env:Body>\
-      </env:Envelope>";
-var options = {
-  'headers':{
-    'SOAPAction': 'login',
-    'charset': 'UTF-8'
-  },
-  'contentType': 'text/xml',
-  'payload':login_soap_request_body
-}
-var response = UrlFetchApp.fetch(soap_url, options);
-var soap = XmlService.getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
+  var sf_version = "42.0";
+  var instanceUrl = "https://na88.lightning.force.com/";
+  var scriptProps = PropertiesService.getScriptProperties();
+  var token = scriptProps.getProperty('sfAuthToken')
+  var soap_url = 'https://login.salesforce.com/services/Soap/u/' + sf_version;
+  var client_id = 'RestForce'
+  var username = scriptProps.getProperty('sfUsername'); 
+  var password = scriptProps.getProperty('sfPassword');
+  login_soap_request_body = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\
+        <env:Envelope\
+                xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" \
+                xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+                xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"\
+                xmlns:urn=\"urn:partner.soap.sforce.com\">\
+            <env:Header>\
+                <urn:CallOptions>\
+                    <urn:client>" + client_id + "</urn:client>\
+                    <urn:defaultNamespace>sf</urn:defaultNamespace>\
+                </urn:CallOptions>\
+            </env:Header>\
+            <env:Body>\
+                <n1:login xmlns:n1=\"urn:partner.soap.sforce.com\">\
+                    <n1:username>" + username + "</n1:username>\
+                    <n1:password>"+password+token+"</n1:password>\
+                </n1:login>\
+            </env:Body>\
+        </env:Envelope>";
+  var options = {
+    'headers':{
+      'SOAPAction': 'login',
+      'charset': 'UTF-8'
+    },
+    'contentType': 'text/xml',
+    'payload':login_soap_request_body
+  }
+  var response = UrlFetchApp.fetch(soap_url, options);
+  var soap = XmlService.getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
 
-var document = XmlService.parse(response.getContentText());
-var root = document.getRootElement();
-var result = root.getChild('Body', soap).getChildren()[0].getChildren()[0]
-var sforce = result.getNamespace();
+  var document = XmlService.parse(response.getContentText());
+  var root = document.getRootElement();
+  var result = root.getChild('Body', soap).getChildren()[0].getChildren()[0]
+  var sforce = result.getNamespace();
 
-var serverUrl = result.getChild('serverUrl', sforce).getValue();
-var instanceUrl = 'https://' + serverUrl.split('/')[2] + "/";
-var sessionID = result.getChild('sessionId', sforce).getValue();
-return {'instanceUrl':instanceUrl,
-        'sessionID':sessionID}
+  var serverUrl = result.getChild('serverUrl', sforce).getValue();
+  var instanceUrl = 'https://' + serverUrl.split('/')[2] + "/";
+  var sessionID = result.getChild('sessionId', sforce).getValue();
+  return {'instanceUrl':instanceUrl,
+          'sessionID':sessionID}
 }
 
 function querySalesforce(soql){
