@@ -400,7 +400,7 @@ function update_salesforce_contact_info(){
             'MobilePhone': data[i][columnDict['Mobile']],
             'Email': data[i][columnDict['Email']],
             'Employer__c': data[i][columnDict['Employer']],
-            'Title': data[i][columnDict]['Title']
+            'Title': data[i][columnDict['Title']]
           }
           postSalesforceContact(salesforceID, contactdata, sflogin )
           sheet.getRange(i+1, lastColumn).setValue("Done").clearFormat().setComment(new Date());;
@@ -415,4 +415,11 @@ function update_salesforce_contact_info(){
     }
   }
 
+}
+
+function send_mail_merge_emails(){
+  var mailmerge_sheetID = PropertiesService.getScriptProperties().getProperty('contactMailMergeSheetID');
+  var draftID = PropertiesService.getScriptProperties().getProperty('AccountUpdateDraftID');
+  var mailmerge_ss = SpreadsheetApp.openById(mailmerge_sheetID);
+  run_mail_merge(mailmerge_ss, draftID, 'email');
 }
