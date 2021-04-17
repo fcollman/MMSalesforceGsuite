@@ -196,6 +196,7 @@ function create_prefilled_links() {
                               prefilledFormLink]);
   }
 }
+
 function add_salesforce_ID_to_users(){
 var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
 var scriptProps = PropertiesService.getScriptProperties();
@@ -333,7 +334,7 @@ function update_salesforce_contact_info(){
 
   var responseID = updateContactsForm.getDestinationId();
   var responsess = SpreadsheetApp.openById(responseID);
-  var headers = createHeaderInSheetIfNotFound_('UpdateStatus', responsess);
+  var headers = createHeaderIfNotFound_('UpdateStatus', responsess);
   var sheet = responsess.getActiveSheet();
   var rangeData = sheet.getDataRange();
   var lastColumn = rangeData.getLastColumn();
