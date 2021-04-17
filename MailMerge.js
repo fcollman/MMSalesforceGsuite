@@ -1,4 +1,4 @@
-function processRow(rowData, mergeData) {
+function processRow(rowData, mergeData, emailcol) {
     var emailText = fillInTemplateFromObject(mergeData.template, rowData);
     var emailSubject = fillInTemplateFromObject(mergeData.subject, rowData);
     var plainTextBody = fillInTemplateFromObject(mergeData.plainText, rowData);
@@ -6,23 +6,24 @@ function processRow(rowData, mergeData) {
     if(rowData.cc != undefined) mergeData.cc = rowData.cc;
     if(rowData.bcc != undefined) mergeData.bcc = rowData.bcc;
     console.log(rowData)
-    GmailApp.sendEmail(rowData.privateemail, emailSubject, plainTextBody, mergeData);
+    GmailApp.sendEmail(rowData[emailcol], emailSubject, plainTextBody, mergeData);
 }
 function getDraftId() {
   var drafts=GmailApp.getDrafts();
   for(var i=0;i<drafts.length;i++) {
     console.log(drafts[i].getId());
+    console.log(drafts[i].getMessage().getSubject());
   }
 }
 
-function run_mail_merge(ss, draftID){
+function run_mail_merge(ss, draftID, tocolumn){
     var name = "Minds Matter"
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
     var from = 'admin@' + domainname;
     var selectedDraft = GmailApp.getDraft(draftID)
     var selectedTemplate = selectedDraft.getMessage()
     var dataSheet = ss.getActiveSheet();
-    var headers = createHeaderIfNotFound_('Merge status');
+    var headers = createHeaderIfNotFound_('Merge status',ss);
     var dataRange = dataSheet.getDataRange();
     //////////////////////////////////////////////////////////////////////////////
     // Get inline images and make sure they stay as inline images
@@ -84,7 +85,7 @@ function run_mail_merge(ss, draftID){
         var rowData = objects[i];
         if (rowData.mergeStatus == "") {
             try {
-                processRow(rowData, mergeData);
+                processRow(rowData, mergeData,tocolumn);
                 dataSheet.getRange(i + 2, headers.indexOf('Merge status') + 1).setValue("Done").clearFormat().setComment(new Date());
             }
             catch (e) {
@@ -98,7 +99,7 @@ function run_merge() {
     var draftID = PropertiesService.getScriptProperties().getProperty('newAccountDraftID');
     var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
     var ss = SpreadsheetApp.openById(userID);
-    run_mail_merge(ss, draftID);
+    run_mail_merge(ss, draftID, 'privateemail');
 }
 
 // Replaces markers in a template string with values define in a JavaScript data object.
