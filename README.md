@@ -21,22 +21,9 @@ beyond the scope of these docs]
 Enable directory sharing in the admin console. 
 https://support.google.com/a/answer/60218?hl=en
 
-2. create these google groups owned by admin@ with groups.google.com
 
-```
-    volunteers@ (for all volunteers)
-    ec@ (for members of executive council)
-    board@ (for members of board)
-    studentsXXXX@ (for all the years that you have)
-    XXXXmentors@ (for all the years that you have)
-    testprep-instructors@ (for volunteers in test prep)
-    wct-instructors@ (for writing and critical thinking instructors)
-    active@ (all active volunteers)
-    senior-enrichment-instructors@ (for senior enrichment instructors)
-    +any other groups you want to manage permissions based on, or want to email collectively)
-```
 
-3. Setup a salesforce report that includes all the volunteers and students you want to have accounts.  We set ours up as follows 
+2. Setup a salesforce report that includes all the volunteers and students you want to have accounts.  We set ours up as follows 
 
 Filtered By:1 AND (2 OR 3)   Edit 
    
@@ -67,7 +54,7 @@ Mailing Street	Mailing City	Mailing State/Province	Mailing Zip/Postal Code	Maili
 
 
 5. If you have existing gsuite accounts, normalize the data between them.
-Add aliases for all existing users with pattern FirstName.LastName@mindsmatterXXX.org  in order that the script recognizes that these salesforce entries have an account already.  Note Salesforce Data must match precisely.  Replace all spaces in First and Last names with “.” Later can use “dry run” variable to test what will happen before it does. 
+Add aliases for all existing users with pattern FirstName.LastName@mindsmatterXXX.org in order that the script recognizes that these salesforce entries have an account already.  Note Salesforce Data must match precisely.  Replace all spaces in First and Last names with “.” Later can use “dry run” variable to test what will happen before it does. 
 
 
 6. Make sure there is a process for updating this information as students and volunteers enter and leave the organization.
@@ -75,7 +62,7 @@ Add aliases for all existing users with pattern FirstName.LastName@mindsmatterXX
 
 7. Create a spreadsheet in your admin accounts gdrive.  We call ours “SEA Current Contacts” you will need the ID of the spreadsheet later (salesforceSpreadSheetID) 
 We decided to give everyone in ec@ and board access to this spreadsheet.  So we modifies shared it with the group ec@ and  board@. This should automatically add and remove access to this information as users are added to and remove from these groups.
-
+TODO: make this running a function. 
 
 8. Install the “Data connector for salesforce” add-on from gdrive, use it to connect to your salesforce account, and pull the report into the sheet. 
 https://gsuite.google.com/marketplace/app/data_connector_for_salesforce/857627895310
@@ -123,11 +110,14 @@ TODO: Make the generation of this spreadsheet automated
   
     Pushes current directory to script.google.com
 
+    if you cannot do this step, you can fall back to copy/pasting code from github.com
+    into files named the same thing within the script.google.com UI.
+
 13. Setup variables at script.google.com
 Open project on web browser
 Hit file>project properties > script properties
 
-    newUserSheetID = [note from above]
+    newUserSheetID = [note from above] 
     salesforceSpreadSheetID = [note from above]
     userSuspensionSheetID = [note from above]
     salesforceSheetName = [note from above]
@@ -154,16 +144,15 @@ TODO: make the spreadsheet creation and variable setting automated.
         "do_remove": true or false, whether you want the script to actively remove members that don't meet these criteria
     }
 
+    run setup_groups function to automatically create all the groups that have not yet been created.  If groups were created before, you may need to transfer ownership of that group to the admin account.
+
 15. Do a dry run of user creation.
-    Edit dry_run = false, to dry_run = true (~line 109) in script.
+    Edit dry_run = false, to dry_run = true (~line 282) in script.
     Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
     Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
-    view> logs to see what would have happened.
-    If satisfied, edit dry_run=true, and rerun.  Accounts should be created, and some group memberships.
+    view> logs to see what would have happened.  Iterate on fixing data in salesforce till desired resullt is achieved.
+    If satisfied, edit dry_run=true, and rerun.  Accounts should be created and group memberships.
 
-TODO: not all groups have users automatically added to yet.  
-
-    XXXXmentors@ (don’t know how to do this as mentors are not linked to years)
     Fix missing group memberships, manually add appropriate volunteers to google classrooms if you are using this gsuite feature. Todo: make this automated and optional.
 
 
