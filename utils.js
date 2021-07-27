@@ -113,7 +113,7 @@ function isDigit(char) {
     return char >= '0' && char <= '9';
 }
 
-function createHeaderIfNotFound_(value) {
+function createHeaderIfNotFound_(value, ss) {
     var sheet = ss.getActiveSheet();
     var lastColumn = sheet.getLastColumn();
     if (lastColumn == 0) {
