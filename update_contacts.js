@@ -1,14 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////////////////
-//
-// The code below will solicit users in the "SEA Current Contacts" spreadsheet to update  
-// their contact info via a custom Google form. Code adapted from examples in  
-// https://developers.google.com/apps-script/reference/forms
-//
-//////////////////////////////////////////////////////////////////////////////////////////
+/** 
+ * @fileoverview Solicits users as documented in "SEA Current Contacts" spreadsheet to update contact info 
+ * via a Google form. Code adapted from examples in https://developers.google.com/apps-script/reference/forms
+ * The config below defines the questions that constitute 
+ * the Google update contact info form.
+*/
 
-// The config below defines the questions that constitute 
-// the Google update contact info form.
-// TODO: Add field descriptions and specify which ones are required
 SALESFORCE_CONTACT_FORM_CONFIG={
   "First Name":{
       "required": true,
@@ -168,7 +164,8 @@ function create_prefilled_links() {
   //     from step 1.
   //  4. Dumps FirstName, email, and pre-filled form_link
   //     in the "Contact Update MailMerge" sheet 
-    
+  // test
+
   var scriptProps = PropertiesService.getScriptProperties();
 
   // Create form
@@ -346,6 +343,10 @@ function postSalesforceContact(contactId, contact, sflogin){
 } 
 
 function update_salesforce_contact_info(){
+
+  // This function performs the following steps:
+  //    1. Pulls responses to the Contact Info Update Form
+  //    2. Posts the data from responses to Salesforce
 
   var scriptProps = PropertiesService.getScriptProperties();
   var updateContactsForm = create_update_contacts_form()
