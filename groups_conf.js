@@ -311,7 +311,7 @@ var seattle_groups_config = {
             "value": "Director of Volunteers"
         }],
         "combination": "and",
-        "name": "Minds Matter Seattle Volunteer Operationgs",
+        "name": "Minds Matter Seattle Volunteer Operations",
         "description": "Email Alias for the Minds Matter Volunteer Ops Team",
         "do_remove": true
     }
