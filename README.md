@@ -1,6 +1,6 @@
 # Minds Matter Salesforce Gsuite Deployment Instructions
 
-    DRAFT: Last edited September 23, 2019
+Last modified September 18, 2021
 
 ## Background
 
@@ -87,10 +87,10 @@ Mobile
     # Use admin credentials
     $ clasp create --title "SalesforceSync"
     $ clasp push  # pushes current directory to script.google.com
-
+```
 
 Note: If you cannot do this step, you can fall back to copy/pasting code from this repo
-    into code files of the same name in the script.google.com UI.
+into code files of the same name in the script.google.com UI.
 
 5. Run the `setup.js` script to create two additional spreadsheets ("User Creation" and "UserSuspension") in the script.google.com UI: My Projects --> google group --> click `setup.gs` in left panel -> Click "Run" in top menu bar --> "Run function" --> "setupSpreadsheets."
 
@@ -102,10 +102,9 @@ File > Project properties > Script properties
         userSuspensionSheetID = XXX # equal to sheet ID of "UserSuspension"
 
 6. Set up additonal script properties manually:
-Project properties > script properties > + Add row
+   Project properties > script properties > + Add row
 
 ```
-
 salesforceSpreadSheetID # set to sheet ID of sheet created in
 salesforceSheetName = [note from above]
 domainname = mindsmatterXXXX.org [your google domain]
@@ -144,34 +143,34 @@ TODO: make the spreadsheet creation and variable setting automated.
 -->
 
 7. Configure desired groups
-    edit groups_conf.js to reflect the groups you want to have managed by the script.
-    each configuration follows a format
+   edit groups_conf.js to reflect the groups you want to have managed by the script.
+   each configuration follows a format
 
-    "GROUP_NAME":{
-    "name": "the name of my group",
-    "description": "the description of my group",
-    "combination": "or" or "and" (controls whether all or any of the filters must be met),
-    "filters":[
-    one or more of these...
-    {
-    "column": "a column name from the salesforce report",
-    "condition": "equals" or "contains" depending on whether you want to search or match,
-    "value": "the value you are matching or searching for"
-    }
-    ]
-    "do_remove": true or false, whether you want the script to actively remove members that don't meet these criteria
-    }
+   "GROUP_NAME":{
+   "name": "the name of my group",
+   "description": "the description of my group",
+   "combination": "or" or "and" (controls whether all or any of the filters must be met),
+   "filters":[
+   one or more of these...
+   {
+   "column": "a column name from the salesforce report",
+   "condition": "equals" or "contains" depending on whether you want to search or match,
+   "value": "the value you are matching or searching for"
+   }
+   ]
+   "do_remove": true or false, whether you want the script to actively remove members that don't meet these criteria
+   }
 
-    run setup_groups function to automatically create all the groups that have not yet been created. If groups were created before, you may need to transfer ownership of that group to the admin account.
+   run setup_groups function to automatically create all the groups that have not yet been created. If groups were created before, you may need to transfer ownership of that group to the admin account.
 
 8. Do a dry run of user creation.
-    Edit dry_run = false, to dry_run = true (~line 282) in script.
-    Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
-    Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
-    view> logs to see what would have happened. Iterate on fixing data in salesforce till desired resullt is achieved.
-    If satisfied, edit dry_run=true, and rerun. Accounts should be created and group memberships.
+   Edit dry_run = false, to dry_run = true (~line 282) in script.
+   Manually trigger script on script.google.com “run>run function>syncGoogleWithSalesforce”
+   Wait ~5 minutes for 140 users (till tan box goes away) (more with more users)
+   view> logs to see what would have happened. Iterate on fixing data in salesforce till desired resullt is achieved.
+   If satisfied, edit dry_run=true, and rerun. Accounts should be created and group memberships.
 
-    Fix missing group memberships, manually add appropriate volunteers to google classrooms if you are using this gsuite feature. Todo: make this automated and optional.
+   Fix missing group memberships, manually add appropriate volunteers to google classrooms if you are using this gsuite feature. Todo: make this automated and optional.
 
 9. Create your intranet sites using sites.google.com
 10. Grant editing permissions to site based upon group membership or individuals you desire.
@@ -245,7 +244,11 @@ Install a mail merge add-on on your “User Creation” spreadsheet.  We use “
 Prepare to deal with questions about logins and people losing login email or not receiving it due to types in email address, or not understanding how to add a gsuite account to their google login if they are using gmail for personal use. One helpful tip is that the admin console allows you to download a list of users and when they have last logged in.  We used this to setup a separate mail merge spreadsheet which emailed users at their personal logins if they hadn’t yet logged in.  I set this up by doing a merge between the login spreadsheet and the user creation spreadsheet in python.
 
     TODO: make this capability easier to do.  We also used this to manually approach and assist volunteers and students who were not yet using the system.  We did have to utilize people’s personal emails for the first session as well because we did not have confidence that everyone was using and checking their new minds matter accounts. -->
+
 ## TODOS
 
 See github issues...
+
+```
+
 ```
