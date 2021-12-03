@@ -12,7 +12,7 @@ function generateRandom() {
   return text;
 }
 
-function addUser(firstName, lastName, default_email, home_email, phone, dry_run) {
+function addUser(firstName, lastName, default_email, home_email, phone, salesforceID, dry_run) {
   var userID = PropertiesService.getScriptProperties().getProperty('newUserSheetID');
   var ss = SpreadsheetApp.openById(userID);
   var sheet = ss.getSheets()[0]
@@ -38,6 +38,10 @@ function addUser(firstName, lastName, default_email, home_email, phone, dry_run)
     emails: [{
       address: home_email,
       type: "home"
+    }],
+    externalIDs: [{
+      "value": salesforceID,
+      "type": "account"
     }]
   };
   if (!dry_run) {
@@ -73,7 +77,31 @@ function addGroupMember(userEmail, groupEmail, dry_run) {
   }
 }
 
+function isUserInGoogleBySalesforceID(salesforceID) {
+  //function to query google directory for whether a user exists in the google system
+  //taking a salesforce ID from the google sheet synced to salesforce
+  //and querying for the externalID metadata associated with the google user object
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var users = AdminDirectory.Users.list({
+    domain: domainname,
+    orderBy: 'givenName',
+    query: "externalId=" + salesforceID
+  });
+
+  if (users.length == 0) {
+    return false;
+  }
+  else {
+    if (users.length > 1) {
+      console.log('More than one user with salesforceID ' + salesforceID + " users:" + users);
+    }
+    return true;
+  }
+}
+
+}
 function isUser(email) {
+  //this should be deprecated, replaced by isUserInGoogleBySalesforceID
   try {
     var user = AdminDirectory.Users.get(email);
     return true;
@@ -81,6 +109,53 @@ function isUser(email) {
   catch (e) {
     console.log('user not found reason: ' + e);
     return false;
+  }
+}
+
+
+function auditGroup(group, correctEmails, do_remove, dry_run) {
+  var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
+  var groupEmail = group.getEmail();
+  console.log('auditing ' + groupEmail);
+  // console.log('correctEmails' + correctEmails);
+  users = group.getUsers();
+  var found_correct = []
+  for (ce = 0; ce < correctEmails.length; ce++) {
+    found_correct.push(false);
+  }
+  // for all users in group validate that they should be there
+  for (var i = 0; i < users.length; i++) {
+    var user = users[i];
+    var validated_user = false;
+    for (var ce = 0; ce < correctEmails.length; ce++) {
+      var correctEmail = correctEmails[ce];
+      if (correctEmail.indexOf(user) != -1) {
+        validated_user = true;
+        found_correct[ce] = true;
+      }
+
+    }
+    if (user == 'admin@' + domainname) {
+      validated_user = true;
+    }
+    if (do_remove) {
+      if (!validated_user) {
+        // remove user
+        if (!dry_run) {
+          AdminDirectory.Members.remove(groupEmail, user.getEmail());
+        }
+        console.log('removing ' + user)
+      }
+    }
+
+  }
+  // for all users that should be in group make sure they are there
+  for (var ce = 0; ce < correctEmails.length; ce++) {
+    var correctEmail = correctEmails[ce];
+    if (!found_correct[ce]) {
+      addGroupMember(correctEmail, group.getEmail(), dry_run);
+      Utilities.sleep(1000);
+    }
   }
 }
 
@@ -193,8 +268,28 @@ function setupGroups() {
   }
 }
 
+function isSalesforceIDActiveInSheet(user, rows, salesforceColumn) {
+  //function to query salesforce google sheet  directory for whether 
+  // a user is still active based upon the salesforce report. 
+  // Looks through the sheet in the salesforceColumn to find any row that  
+  // has a salesforceID that matches metadata in the google users externalID fields.
+  var externalIDs = user.getExternalIds()
+  for (var r = 1; r < rows.length; r++) {
+    var salesforceID = rows[r][salesforceColumn];
+    externalIDs = user.getExternalIds()
+    for (var extID in externalIDs) {
+      if (externalIDs[extID].type == 'account') {
+        if (externalIDs[extID].value == salesforceID) {
+          return true;
+        }
+      }
+    }
 
+  }
+  return false;
+}
 function isUserByEmail(user, rows, emailCol) {
+  //this should be deprecated, replaced by isSalesforceIDActiveInSheet
   for (var r = 1; r < rows.length; r++) {
     var email = rows[r][emailCol];
     for (var e = 0; e < user.emails.length; e++) {
@@ -206,6 +301,7 @@ function isUserByEmail(user, rows, emailCol) {
   return false;
 }
 function isUserbyName(user, rows, fCol, lCol) {
+  //this should be deprecated, replaced by isSalesforceIDActiveInSheet
   for (var r = 1; r < rows.length; r++) {
     var fullname = rows[r][fCol] + " " + rows[r][lCol]
     if (fullname.indexOf(user.name.fullName) != -1) {
@@ -247,13 +343,11 @@ function auditActive() {
     user = all_users[i];
     if (!user.suspended) {
       if (protectedAccounts.indexOf(user.primaryEmail.split('@')[0]) == -1) {
-        if (!isUserbyName(user, rangeValues, columnDict['First Name'], columnDict['Last Name'])) {
-          //Logger.log("User not found by name in active salesforce: " + user.name.fullName);
-          if (!isUserByEmail(user, rangeValues, columnDict['Email'])) {
-            suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
-            console.log({ message: 'User Marked For Suspension', fullName: user.name.fullName, email: user.primaryEmail });
-          }
+        if (!isSalesforceIDActiveInSheet(user, rangeValues, columnDict['Contact ID'])) {
+          suspendedSheet.appendRow([user.name.fullName, user.primaryEmail])
+          console.log({ message: 'User Marked For Suspension', fullName: user.name.fullName, email: user.primaryEmail });
         }
+
       }
     }
   }
@@ -316,9 +410,9 @@ function syncGoogleWithSalesforce_v2() {
     phone = data[i][columnDict["Phone"]];
     var email = data[i][columnDict["First Name"]].toLowerCase() + "." + data[i][columnDict["Last Name"]].toLowerCase() + "@" + domainname;
     email = email.replace(" ", ".");
-    email = email.replace(" ", ".");
-    var is_user = isUser(email);
 
+    var salesforceID = data[i][columnDict["Contact ID"]]
+    var is_user = isUserInGoogleBySalesforceID(salesforceID);
     // make a user if we they are not in the system
     if (!is_user) {
       // avoid making emails for older alumni in system
@@ -328,6 +422,7 @@ function syncGoogleWithSalesforce_v2() {
           email,
           data[i][columnDict['Email']],
           data[i][columnDict['Phone']],
+          salesforceID,
           dry_run);
         is_user = true;
       }
