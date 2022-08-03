@@ -153,7 +153,7 @@ var seattle_groups_config = {
         "description": "Minds Matter Math Instructors",
         "do_remove": true
     },
-    "students2021": {
+    "students2025": {
         "filters": [
             {
                 "column": "Contact Record Type",
@@ -163,12 +163,12 @@ var seattle_groups_config = {
             {
                 "column": "Year",
                 "condition": "equals",
-                "value": 2021
+                "value": 2025
             }
         ],
         "combination": "and",
-        "name": "Minds Matter Students Graduating 2021",
-        "description": "Minds Matter Students Graduating 2021"
+        "name": "Minds Matter Students Graduating 2025",
+        "description": "Minds Matter Students Graduating 2025"
     },
     "students2022": {
         "filters": [
@@ -221,7 +221,7 @@ var seattle_groups_config = {
         "name": "Minds Matter Students Graduating 2024",
         "description": "Minds Matter Students Graduating 2024"
     },
-    "2021mentors": {
+    "2025mentors": {
         "filters": [
             {
                 "column": "Role (Non-Leadership)",
@@ -231,12 +231,12 @@ var seattle_groups_config = {
             {
                 "column": "Student Year Association",
                 "condition": "equals",
-                "value": "2021"
+                "value": "2025"
             }
         ],
         "combination": "and",
-        "name": "Minds Matter Mentors for Students Graduating 2021",
-        "description": "Minds Matter Mentors for Students Graduating 2021",
+        "name": "Minds Matter Mentors for Students Graduating 2025",
+        "description": "Minds Matter Mentors for Students Graduating 2025",
         "do_remove": true
     },
     "2022mentors": {
