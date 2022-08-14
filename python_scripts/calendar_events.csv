@@ -1,194 +1,185 @@
 ,Date,Time,Calendar Assignment,Share with group,Event Title,Color,start,end,calendarEventID
-0,8/1/2020,10:00 am - 12:00 pm,ec,ec,Operations Retreat,1,10:00 am,12:00 pm,4hfgod6622u2ogbm0g1ashgq1g
-1,8/15/2020,10:00 am - 12:00 pm,ec,ec,Pre-kickoff EC meeting,1,10:00 am,12:00 pm,kr9gb3qr60dfvec0jaf1p8m55k
-2,8/29/2020,10:00 am - 10:30 am,all,active,Welcome message,2,10:00 am,10:30 am,ppfab6o5kk71j4drfcqghb9rp8
-3,8/29/2020,10:30 am - 11:30 am,"students2022, 2022mentors","students2022, 2022mentors",Junior mentoring orientation,8,10:30 am,11:30 am,mflfqgeflbsm4q7mj5lt2ni86g
-4,8/29/2020,10:30 am - 11:30 am,"math-instructors, test-prepinstructors, wct-instructors","math-instructors, test-prepinstructors, wct-instructors",Instructor orientation,3,10:30 am,11:30 am,7rkmlpqekp6nnej3okg7s16m40
-5,8/29/2020,10:30 am - 11:30 am,2023mentors,,New mentor orientation,3,10:30 am,11:30 am,diim2vfg9oqaj525vklnrdc3n0
-6,8/29/2020,10:30 am - 11:30 am,students2023,,New student orientation,7,10:30 am,11:30 am,sjtaj9ld1eud06p20sn3294s6k
-7,8/29/2020,10:30 am - 11:30 am,"students2021, 2021mentors, senior-enrichment-instructors",,Senior orientation,9,10:30 am,11:30 am,b6b2amv9mdppu7boq0d4kp6r98
-8,9/12/2020,11 am - 2 pm,"ec, volunteers, students","ec, volunteers, students",Kickoff,2,11 am,2 pm,864t9sepq44t27g0ltcsruiqhg
-9,9/19/2020,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,lal6ahfe5ct99ru1n80hncm2ss
-10,9/19/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,d9tb3snj251l2c8elkdsfisb3c
-11,9/19/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,gcei9o2dlmtqvahpsf6cojct4k
-12,9/19/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,n1qefl9ncee996l5e3opqfi2ik
-13,9/19/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,ul18pe89j4r3g90p3vp75mrbps
-14,9/19/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,kjmddio223gkv06n3vkmg7h8ic
-15,9/19/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,868pf96ldvhiheg60ct5l4c5tk
-16,9/19/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,4m1ku7mse5n4i8ne2eagm87mms
-17,9/26/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,4mllc9rrr6t0hchuhqsu148ots
-18,9/26/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,dqam290q6iu2mtur8qj4so55f0
-19,9/26/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,g0n9tvaga3u9jcldorai8vrtvo
-20,9/26/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,vu7it3ogl1dvudll0ml2du11ps
-21,9/26/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,g7m5b86tcgm7datpl34nk86tho
-22,9/26/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,uadr6d78tab0k67hvpd0skpeik
-23,9/26/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,4ktdga0b49opsdt52smc2lc7ec
-24,10/3/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,uu2tptj8nhifnll2ge5tueu1rg
-25,10/3/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,m0oj7jlvvv20todpovefaftm7o
-26,10/3/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,2njme5dqndgrmqgso6nbq5dsu0
-27,10/3/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,1hm817c4t341mgv7cmo1v58hp4
-28,10/3/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,mu7439b4kluebk21a61nf6o9b0
-29,10/3/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,4kg5du3t13rg7gjpvk5iq73ldc
-30,10/3/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,s9l1hg1u0gsd2l36cht5ltotck
-31,10/17/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,40h8q31vdnf5gqaq57lhgg6c6g
-32,10/17/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,l2jr2dmp3oe684n8nsvba1r28k
-33,10/17/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,151c2tl7qplscp88nf4pik5ak4
-34,10/17/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,mu7i4v7molfr5t47jvr17uel3c
-35,10/17/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,9vpm9375ua8d5socpemmpnas8o
-36,10/17/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,litm5sdl3stf2n82v3crj48kg0
-37,10/17/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,amkckp4atpqlq6ddmoh277hssg
-38,10/24/2020,2:30 pm - 4 pm,"ec, board","ec, board",EC + board Meeting,1,2:30 pm,4 pm,4qusbg1btfj92undnhtctc9tvc
-39,10/24/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,8jj2544mk961rthdo04ft5g61c
-40,10/24/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,iskpc7r4q5m4ddu39cgg8ut1cg
-41,10/24/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,ek7me6ol9hmklqab5d2ckng0lg
-42,10/24/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,bbuoauevkn6glfq48ao3uohcig
-43,10/24/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,05rhb07qfdaulp625djn8g7jfc
-44,10/24/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,7g74o1e4q6mgjsd13e51k83bck
-45,10/24/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,1805f053k9fpnbg82g0a0ltbtc
-46,10/31/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,l5ajp2ejfgkdc9hmsm1sojo8r4
-47,10/31/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,u8st1l4r9ecqc4mk1f3t1fj98c
-48,10/31/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,trmm9kdfj04vb1rk9cn49hqieo
-49,10/31/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,aeo5be27rhcmfmf4bedhak14ng
-50,10/31/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,702ackn6frh5s31mjhq22ntg3g
-51,10/31/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,t9hqpspv2tf1dh5au2s995ad1c
-52,10/31/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,3va3us555squ9tn6hjn337bgno
-53,11/14/2020,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,8l724mb6bjq7igmieh7sgms9j0
-54,11/14/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,8c7lvo0fgpb2uphv326q63be74
-55,11/14/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,k1u5ckpdprne912lsihdfqq2oo
-56,11/14/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,s7qrqeqh0k0edk39n7kats0ug0
-57,11/14/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,7msntus8rna5n1b7osvd4ljrhs
-58,11/14/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,qjjffbgmn9vmor4jblokla4knk
-59,11/14/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,g5cl0kfbbq08k6elq9u62g8ir0
-60,11/14/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,qq2gmbtja6ab7f4ogfr5kntr7o
-61,11/21/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,t8ut96k35muev9v2gmjbrpvvvg
-62,11/21/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,j4dptrk4mbn66f5sdvbn83cfa0
-63,11/21/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,96o9ejijqmrtukmpv6e2c773co
-64,11/21/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,72i8fe26sbkgsqsdoa9uli2gnk
-65,11/21/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,di4o4a4g08eml7eb2f1daheefs
-66,11/21/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,qsh0h2a9nug1j44ifbtukl4c60
-67,11/21/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,mb7h1c7nghckq2ap5lql4rg4lc
-68,12/5/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,glko92caoqu4uedef2d2kan7fg
-69,12/5/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,ravd6o2fcqr3olik5e00d5b1ko
-70,12/5/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,htgs08e8un9kdv9c4s6rcs1k10
-71,12/5/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,6r84ejc8u9ea5ng80h6iq1jr2c
-72,12/5/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,u4emrd40rjpn885jk61rf38574
-73,12/5/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,0u45blq4f8kd1dnbat9uh9l56s
-74,12/5/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,tv7i43pcrsl97ttb2vmh4f3vt4
-75,12/12/2020,11 am - 2 pm,"volunteers, ec, board, students","volunteers, ec",Holiday Party,2,11 am,2 pm,pr746efgpvkqt2ss2l224tggp8
-76,12/19/2020,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,a4eu4h9lfe2v9nehh0pbunr5tc
-77,12/19/2020,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,6rrrj4ntrig672ajef6v5t0ejo
-78,12/19/2020,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,81ntallso9kfjjbp70vf36rg7g
-79,12/19/2020,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,ktbu37i9hgfbmq29jso83vjn9o
-80,12/19/2020,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,qu4jnghe8hl1rnm92f75l45r88
-81,12/19/2020,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,c39s6ccgs9ql8dost50kuf6d30
-82,12/19/2020,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,tmpfmsiuuhv3hjuojjhos9ra18
-83,1/9/2021,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,3pmjcs0lb3q6h3r4gginpapfnk
-84,1/9/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,vgogfvg0u7e32ct0frq8b0rijk
-85,1/9/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,1cai7u3hflhnic8ohdiljdis20
-86,1/9/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,efgrrfe75h2rp0suaj0pp34cb0
-87,1/9/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,t4tph1edjeoa8tpfegej794gf0
-88,1/9/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,oiucjumasvd1e89fjljpduc0go
-89,1/9/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,8ec1uoedu04qumrs8m26uq6mng
-90,1/9/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,juvln8idinlsokrfe4824mr764
-91,1/23/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,r34s835agv5clsepgm063qh14s
-92,1/23/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,e6s2hv1t6repft5k0q7un6utpk
-93,1/23/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,j5pdds77a7d7k8khvjvs4d3c04
-94,1/23/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,4rp257u7fumrq3km9hut3i5dag
-95,1/23/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,vvje9gnvc7s0tbdarrsft05qvs
-96,1/23/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,rncdugc95akbklt3hedcroel28
-97,1/23/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,7jt1lvhhs1m535msumi1velu84
-98,1/30/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,utieqh56butafltpub3iir8ce8
-99,1/30/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,com5qgrpjgkolmiqechdv7clss
-100,1/30/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,7oi38p3br3vi6ac4t3qahin65o
-101,1/30/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,oe34ipl6c26vclavt87ihl74a8
-102,1/30/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,vs9rsje3qqd6buj8au677tf6so
-103,1/30/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,k73hqtvcv4bauu8bvknetqlb24
-104,1/30/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,uhl3lgal0p4kdag2oqdoqqha1k
-105,2/6/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,9785eopc0e70ncoujsimgpfcl8
-106,2/6/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,84l43dlvldudrk0sqo930q4vp0
-107,2/6/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,5nn4flkqec0b130ov2i2uc8cos
-108,2/6/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,h47t4unko735es6d04blnl0q0s
-109,2/6/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,09a026711ieaoornq36v54ir0c
-110,2/6/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,i457kcb8a0o1cnmlqpi28at300
-111,2/6/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,rrhlk5ittnk6ep3qe41to3btt0
-112,2/20/2021,2:30 pm - 4 pm,"ec, board","ec, board",EC + board Meeting,1,2:30 pm,4 pm,qce9719upms3mulbqrb8j6c6p4
-113,2/20/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,c1g9epcdt95dsr83p5tm6j5ajo
-114,2/20/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,t7qmg6cq0b6hfqc0fn272gjjeg
-115,2/20/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,8c0diipm5hmsl8tn2j6gnbt9hk
-116,2/20/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,3frk33dv0ggnuqith727ft44o8
-117,2/20/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,clujbimfv0g24v8k0p7cvicqt0
-118,2/20/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,7j1piepc8aangeig3j2ee5irs4
-119,2/22/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,jn7thm01upsrlk3lp0b78gv8q8
-120,2/27/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,ni0dmqm557i96349a3hpn4qves
-121,2/27/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,qsprqerjldkse2gtjc0dovoa5k
-122,2/27/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,aph5gg102t7kh8n8pt50nm4n3s
-123,2/27/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,60cfn8ldpl6d1s09s1r2dug668
-124,2/27/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,dalit8m3dkc2h4ib1oc9uf9rko
-125,2/27/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,q781anuqkt72tkh47ol8tie5hg
-126,2/27/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,46duo8ni5btl2cmago73p0oqpg
-127,3/6/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,v0dutobs2crnds8l85vm67o500
-128,3/6/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,bvjjk7qsm24kggvu6u2tgm90nk
-129,3/6/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,l0efuuhii323hprkp2on53slq8
-130,3/6/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,vrsd8naggqtmfna4j05mvnjf1g
-131,3/6/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,t47mc7snkidsnqdvqsv3q0bmfg
-132,3/6/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,herd1rqp70psm4ajqaba94dodc
-133,3/6/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,nv144aolk6bu2o1b4igqjo7e34
-134,3/13/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,bliaub6e8nhhapof2gqpr73uns
-135,3/13/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,47t99rorudfmbs739ok1g5gtcs
-136,3/13/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,11s9ua8uk03mvpqu9ogdrkslek
-137,3/13/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,nud60usda4mf7tql41r58sl5dg
-138,3/13/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,cm9iq27306h50mtj7u2njmbkqg
-139,3/13/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,q9f8rgp99unbd34hpkr007r8us
-140,3/13/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,sgn5lj3rllnlapivmo92vi9774
-141,3/20/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,u7rgi8nu2u5tuvkv52mlr9sp60
-142,3/20/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,6q71pfdnen61aslo1o438jshdk
-143,3/20/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,7luj5m174oakbs5k1von87sdvo
-144,3/20/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,skclqu6tdps199ifdu65f6ohrc
-145,3/20/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,cl794slksejndqie49itc7hd3s
-146,3/20/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,t7ned9l6n5ussp1ovkhuu0h8hg
-147,3/20/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,fmjg09h1lm8k3du8doq8cdvm8o
-148,3/27/2021,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,n2h7rv6htumaneick31dph0hak
-149,3/27/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,pn290q90fa0199sh7lprem40ho
-150,3/27/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,1n0jbpac4gccdlbu3pu179rdis
-151,3/27/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,60nn1hkg8sdnbq14621e40m8ps
-152,3/27/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,nunm1cqm7q9ghl18iasgr0pmq0
-153,3/27/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,68eod0dgu8qatlpab6avv2jpic
-154,3/27/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,u1qhnnrjl8326qvjghtcdvn3hs
-155,3/27/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,s2dafb48bca1gt6v0ncdh8pck4
-156,4/3/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,rfl8sjnl6csuh2tvdulqhipgbs
-157,4/3/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,s777mnf2lilg0214n3lcukpg00
-158,4/3/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,5t8lieekg07q3mu1asmh70blss
-159,4/3/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,gfatbmf9t0s231223ue8tjcbl0
-160,4/3/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,ij0a5vv3b7g5avhsmiluuidvik
-161,4/3/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,ldmcm0gl0drce5ha61u14ilvj4
-162,4/3/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,mnmvjrkuumbcveo878grom9h2g
-163,4/17/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,58dis98gdj3cr4mpeggajstvpg
-164,4/17/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,c8rorhtuank13rtarsc2b8m1j4
-165,4/17/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,n4lalg6f6m96rceh20b56phr0k
-166,4/17/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,1mr2s2dsb4cgk506g55offtl74
-167,4/17/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,ag8vfmd3p5hcpk1k3houetu2ak
-168,4/17/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,v928tvautr71phbpt0riku0jcc
-169,4/17/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,neknetusssc99m8hbs5s51m8t0
-170,4/24/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,hn9eibm1eka5vk2k8nkdh1oqfo
-171,4/24/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,6khnhq3554541q173c66b97jg8
-172,4/24/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,hfuvnd0dhgvhpprpm7rrnhs72g
-173,4/24/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,mdu8ajpjha3rtl62racaj55co0
-174,4/24/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,7ga1ft50jh71gu0soblg478bdc
-175,4/24/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,6j6o6l2o5tf7bogsooelpkmq70
-176,4/24/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,pgh497mpi3hofop0tempesqhgg
-177,5/1/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,048r01vdr71503rvrfoo3beamo
-178,5/1/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,ifmo708mndbjuogpmnnl374l30
-179,5/1/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,9oiu38a4qsrja47p765dcisqss
-180,5/1/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,5e6nlpfsu34p0hfqraiuu7lfh0
-181,5/1/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,tkbpbkan6l2jj09k70e7p88e94
-182,5/1/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,mjfq1h5goam48ba92dkna7384o
-183,5/1/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,fehu8d1ht12ibbpb5a3i5p6ivg
-184,5/8/2021,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,us83ihnivfa8bufr1t3u27rjf0
-185,5/8/2021,10 am - 11 am,WCT,"WCT instructors, sophomore class",Writing and Critical Thinking,4,10 am,11 am,78gvv629a4m5lak3j4nes9lmho
-186,5/8/2021,11 am - 12 pm,Math Matters,"math matters volunteers, sophomore class",Math Matters,3,11 am,12 pm,buncr8k8iuimn2h608alc9ourk
-187,5/8/2021,10 am - 12 pm,Test prep,"test prep instructors, junior class",Test Prep,5,10 am,12 pm,r56r2p1herb1pc2s53kegblds0
-188,5/8/2021,10 am - 12 pm,Senior Enrichment,"SE instructors, senior class",Senior Enrichment,6,10 am,12 pm,uvas5q06fp11dh7gegfos0oros
-189,5/8/2021,12 pm - 2 pm,Sophomore Mentoring,"sophomore mentors, sophomore class",Sophomore Mentoring,7,12 pm,2 pm,jq3gi55koc30oh9l2mgue0flig
-190,5/8/2021,12 pm - 2 pm,Junior Mentoring,"junior mentors, junior class",Junior Mentoring,8,12 pm,2 pm,jtb1si551oeg3qn1v9adl61pdc
-191,5/8/2021,12 pm - 2 pm,Senior Mentoring,"senior mentors, senior class",Senior Mentoring,9,12 pm,2 pm,396eddjfds9k3q8s4covlp62is
-192,5/15/2021,10 am - 1 pm,"volunteers, ec, board, students","volunteers, ec, board, students",Graduation,2,10 am,1 pm,pq6262n86pqibnv3ja3pviocgo
+0,9/17/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,tpeajj87r1itb9klee0oc3i86s
+1,9/17/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,kqnqjt1a02l9sgslohrjmc6848
+2,9/17/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,2iksc0qp0greso2i49cme2l7u8
+3,9/17/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,b4q4kc3e1p2pfu3q5pvv7lduuk
+4,9/17/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,6si8g2rov0fv5rapc56tsukhvo
+5,9/17/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,lq89djakisv40pn3hj9etnupb0
+6,9/17/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,6t10379gu4f8hrfle4h10pf72k
+7,9/24/2022,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,j85miga9rqo9qkfnpe6ld16gl8
+8,9/24/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,jqrbhr696gjekc95btvjli1kgs
+9,9/24/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,se150s9s4q5e5amv0sj5t0ge48
+10,9/24/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,djd06t6rann4ihhokcrqejkjvc
+11,9/24/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,qg8qdlt2g83jmlbdvock9bso1g
+12,9/24/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,8n8npgm34gioh2da3k34mqmjvk
+13,9/24/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,i3svprooo8cb7pqncn0q2jk0vs
+14,9/24/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,10qnnf38hroibvqjjc2qeq6i60
+15,10/1/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,0609b5f2r3ui3he7pnp6lfdr5o
+16,10/1/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,4i3lq2dflnf957fdef7n7e3p1s
+17,10/1/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,ipm9n4osv6cb02hsjre3g8go10
+18,10/1/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,bb7regk8rctvv31lge79eighic
+19,10/1/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,ecn8j1f0mvd0huu7psclhktc1o
+20,10/1/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,dllkk0qnrcq58f37ueu5qdu9ps
+21,10/1/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,d827b9nuvskgdof3gacbtf2bu4
+22,10/15/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,gcrpu0kehplrci6spndcqdoifg
+23,10/15/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,07u06fl7dss2rerkd3dt5dccbo
+24,10/15/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,lj9eb591ic634p2cp871ppctlg
+25,10/15/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,l3s26j50e9d7n8kj94s15muro8
+26,10/15/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,b1u42868epqdbrdqje2pmehdac
+27,10/15/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,rvfjeh5o401t7baett7k17hmfk
+28,10/15/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,8smq783m7hgokg848q2jtpttp0
+29,10/22/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,hr5odvavar33tg1u0mva25uas4
+30,10/22/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,rkqjqbndg8d584chjia865nkmo
+31,10/22/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,q5s833d9kk78ctljb487g7798c
+32,10/22/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,7cogksn2sf6l0o64hslcmoi7f8
+33,10/22/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,k8u052j57uq3k88qi95v8ubu60
+34,10/22/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,l2mbelrrqioo4k4mfnqgpiqib8
+35,10/22/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,143n7q55h9rdgb9ue8t1b5foo0
+36,10/29/2022,2:30 pm - 4 pm,ec,"ec,board",EC + Board Meeting,1,2:30 pm,4 pm,pe0hmtn2o9mcamsre5rhrg8930
+37,10/29/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,jop24g9cnecdiknc1r68u3ajnc
+38,10/29/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,43rl83v6d2orcslel6at7a3tuk
+39,10/29/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,vcl8e41gdt9ev7sdqfoclsa4tk
+40,10/29/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,275ss93o4n9d199243ki4181ig
+41,10/29/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,kicfcrm09pa90qtntlb2lik5hk
+42,10/29/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,vovq52mb869agrtu8ihcu96on4
+43,10/29/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,lnd3cmj67qn0tugmchpbdkea50
+44,11/5/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,lfqk0gljinld7ndv4hiqqoe66c
+45,11/5/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,rt5qr8jqoouj1par2u5r4fp68o
+46,11/5/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,lk2shju3n3piiviua7lnphdono
+47,11/5/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,sqnn83lqpcvfvbo2rl79s00q3k
+48,11/5/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,sp33suitbi1snq8f23eh8lakj8
+49,11/5/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,mjq00fvvgda6emvm3j1g3dm7ug
+50,11/5/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,qfd9aria6ed8kjbiiiitrea8sc
+51,11/19/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,rd0ncao02ohrncqs938b191k5s
+52,11/19/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,4ffktqa9cb8ls813ngnnpphn74
+53,11/19/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,rejiolspc2kk5q0le0ompo6u4c
+54,11/19/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,fhe3ep1omekh4kuoj5ac0gk3js
+55,11/19/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,hgbbm2103t264aac0ehsnj484c
+56,11/19/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,mg3il76vf40av4sa42al65ivfg
+57,11/19/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,ei0sr9pug44evp39mek75vi0qk
+58,11/19/2022,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,rk3svj4uiftdhgc6st07r4tols
+59,12/3/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,napl826gkntostuamrj5srr5co
+60,12/3/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,erin9bdjppq4nmmeuvt918t5ko
+61,12/3/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,bnfidpivotkro5vh0840i3k2hc
+62,12/3/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,l1mnjkm2v0leac1p3j1q2smoqg
+63,12/3/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,oeaknfi2ujbsi80gacvfil749s
+64,12/3/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,f3v616m23gg65sk606gegek8mo
+65,12/3/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,jjjlvutmj5efepnnogheivlp7o
+66,12/10/2022,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,nfikmiurgmne2f9hs9rafhl7i8
+67,12/10/2022,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,kg36heha9ugvqfapvm5hq5tk4s
+68,12/10/2022,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,pdhbldhlfdhpk5rprfgil8q0lo
+69,12/10/2022,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,k6tgjlta6plff5q75njiek8jtk
+70,12/10/2022,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,ffkfvqfpjbk22vgglpu3nr6umc
+71,12/10/2022,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,81qfsfv7ak5rkhi01vj7gm8lcc
+72,12/10/2022,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,rs041k9gbet00i9bpc4vd934o4
+73,12/17/2022,11 am - 1 pm,Holiday Party,active,Holiday Party,1,11 am,1 pm,9e823ce2psgbtjdp76urv082f4
+74,1/7/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,993e3phr9ma49pbjtohbjrfs60
+75,1/7/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,5pum0iujpc0gpdg4ctobolqnvc
+76,1/7/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,6nn5nn434ijav2pllb196op438
+77,1/7/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,27g79i7qlu8tj9res0lhdqcv5o
+78,1/7/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,ep7g4sphf883q33t4qesgj74p8
+79,1/7/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,9kh0nmq080uqvt3o9gath8dk2g
+80,1/7/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,eqin0nh90c5ilffjd4p4fh0hp0
+81,1/21/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,9l2a05ke6bodtdih3nmbj5opdc
+82,1/21/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,rk8q4j77fn0booldvdvjr74veo
+83,1/21/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,k96kmuvaoh563bns4fadtj33ec
+84,1/21/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,d0aki52gd1h2v95lc3p1irl238
+85,1/21/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,6bhsjnepo6oun4koq6lljihqo4
+86,1/21/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,hf1b6htnh3et05ghmfrl641960
+87,1/21/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,vn5mv5rquvihrjgh36t0u81iag
+88,1/21/2023,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,pdcii95rvkhje8vqjbkmdr2j1o
+89,1/28/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,943splivhc9fjagjopnu4gukig
+90,1/28/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,q8o7jl34etjr2a664h0mee2a5k
+91,1/28/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,ql314v589m5h5upak0hbub689g
+92,1/28/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,4kkner8gen315da0k77sfi4l58
+93,1/28/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,l8ot5rb4v6mhjb0bnv4icj8obo
+94,1/28/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,4rio5hbcbubsrospg15j5klhkc
+95,1/28/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,8ivro0u0conn05fh9a3i32omss
+96,2/4/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,kj4o9t02m6j1g28ie8j2h80558
+97,2/4/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,ljc4hf92ua3hoj59m79mltlu30
+98,2/4/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,fl4ugmlc2egc45cb6778f6sjcs
+99,2/4/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,qem1m79p0u99eufpecqijshu30
+100,2/4/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,8fj6as0be3qdjh42u0aiqvs67c
+101,2/4/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,qf9qp75g4b3oh7v6q6ut7rjul4
+102,2/4/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,h5i732e0phrl8carti347ebsvk
+103,2/11/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,36v240do273buummlh8b4so2fs
+104,2/11/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,mrjuq671mhsg8uf7us3anr6rc4
+105,2/11/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,ft44k8ssi76c9l7fvhceb0uu5o
+106,2/11/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,l97lpn02g5g8t8ls2vpnki4v6c
+107,2/11/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,tf7nddrfqes2d3fn9vpg2mkg74
+108,2/11/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,jig92hmbhj3vmj80dhugu8t6jg
+109,2/11/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,0bc2jidjv1g9e84kip57ibh5og
+110,2/25/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,brc2o5n3v4mghl2nuu0kd5o7hs
+111,2/25/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,doag257sripbomn4j7ncgtvgp8
+112,2/25/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,8t12fnpvl0lgmtbp4ajbu82u20
+113,2/25/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,kjem42tcfjkdc8ukpd33568nto
+114,2/25/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,0reseno3pmvk76evb8dfaim68s
+115,2/25/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,2pli959elrttrbtos5evo2p5tk
+116,2/25/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,6pom9916qb84d59kdtqj200n30
+117,2/25/2023,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,27oegll2n6jj62jc5crr8cjs64
+118,3/4/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,lsn6opokcdnkbe37lpe2btk5ik
+119,3/4/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,0ei0hmvch1r141qb8sc6ajaa18
+120,3/4/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,jlndc5id1adje6r1q1k6tgm8kk
+121,3/4/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,n7e4cobf55v2dpetu1c5osnf9k
+122,3/4/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,cb2luq4e278q17c57ekebvlieg
+123,3/4/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,s5nlraqub3q96q4tmjrbbj6g6c
+124,3/4/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,bhf1t497h0jie0n3hednmrfqgs
+125,3/11/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,djg1bssabq66bqpjekkr68ids0
+126,3/11/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,q9pm7st2gq0nnlbq11aiifod2k
+127,3/11/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,klpbba4ck1o4p9eeio9b6vko9o
+128,3/11/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,shm8p0vsb8dsljqfei79tpprds
+129,3/11/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,i5dio99ohjg0adp4p1esud1hk8
+130,3/11/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,kn6tptinjupi2ir0tposf4df5s
+131,3/11/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,rsp30glgds7teipjik73glvodg
+132,3/18/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,jf8f3iub0gsf49l9tq7bsqq5ko
+133,3/18/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,8plmtobt22i9mpu5jq0r4hqclk
+134,3/18/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,7vpd6kdal5kvnb7t67v6em05to
+135,3/18/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,0lvqsbld36koigkn8lkg4ck0vk
+136,3/18/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,k5ag25c9bauurri0983271lj78
+137,3/18/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,m096i717u85v63vl4tniocrg4k
+138,3/18/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,cqlci8d4qgmlc1mcfp127btel4
+139,3/25/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,bptuk28pj1lb5jm8p9nqc936pc
+140,3/25/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,6s0q3cp2ec1vag9qpq52jlen3k
+141,3/25/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,n9n0ppcf5651u93nagj6l2ks20
+142,3/25/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,t3id5aras46c8r1qqhafa8nseg
+143,3/25/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,b7da6v3j1vkeuma22qh974psik
+144,3/25/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,mclbs74pg4bdkkdfh0n1dbf1s4
+145,3/25/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,p73rdmnmhqtj1gctrt374ubpps
+146,3/25/2023,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,dma815m3kd5hbq2ckaal095678
+147,4/1/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,gpgiqblgua4oo3ebeqbp4urg80
+148,4/1/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,s80blcsbggkb7oiu2pifb832e4
+149,4/1/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,62kqgtricdi3nt50u8v903quig
+150,4/1/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,ccch7pbjae135bna95omvh3n3c
+151,4/1/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,fas8kj7mkq62o2lten0jo8jk6o
+152,4/1/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,bli96g8olka5n5ru8hhet9mtt4
+153,4/1/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,9vr13hvemsjghqcrjqsd01sdm0
+154,4/15/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,q874p2m812gs5j8l3vlk01j0us
+155,4/15/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,2k77hpb6vsfor2bblgj29ktd08
+156,4/15/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,u0l357fprp899itpta6ffea3m8
+157,4/15/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,e3crbm2e5el1jhmcnn5e4hr7es
+158,4/15/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,ta9vj6vhd9gn623rr30freekg4
+159,4/15/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,huppppu5rr1tl0jutb76g6ddh0
+160,4/15/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,nl83sd8bfk1e8crqch3au57i94
+161,4/22/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,78bsmdm1seps4l8cj1bf5rg6ms
+162,4/22/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,3e5cu2nkblmon40i1dee54an3s
+163,4/22/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,29teh170s8c12ap274lfkkj6d8
+164,4/22/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,4fj8ms8jn4afpofoo7g9gb65bk
+165,4/22/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,kbcfi206pvd5hatoh6dqr4o47k
+166,4/22/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,e4a1f9llh3j85nduje6clhnl2s
+167,4/22/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,e258in8v8l9on26bl3eddoc034
+168,4/29/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,64eagdv13sb8hsn68iohqubcps
+169,4/29/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,cgrvajibr8p0dtpavt7s9nhr18
+170,4/29/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,p1vfl2octacq3tvpng4v6hun9g
+171,4/29/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,ej0e39h3jlepei5lbl5l4i5pq8
+172,4/29/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,rig73b86s0rpdjd9pvej3fcsuc
+173,4/29/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,6kpl7etuskscpmkmevie06jto8
+174,4/29/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,41nsk261o98vcgm1tn3h407a3o
+175,4/29/2023,2:30 pm - 4 pm,ec,ec,EC Meeting,1,2:30 pm,4 pm,qt45onu8bo9tr4bessfcaf6suc
+176,5/6/2023,10 am - 11 am,WCT,"wct-instructors, students2024",Writing and Critical Thinking,4,10 am,11 am,al5v8qoein6plbqkdpo54fma80
+177,5/6/2023,11 am - 12 pm,Math Matters,"math-instructors, students2024",Math Matters,3,11 am,12 pm,tb8879oi99ibv5t1dg9viprhis
+178,5/6/2023,10 am - 12 pm,Test prep,"testprep-instructors, students2023",Test Prep,5,10 am,12 pm,hhd4p4g3qhiqt18d2r2foug0hs
+179,5/6/2023,10 am - 12 pm,Senior Enrichment,"senior-enrichment-instructors, students2022",Senior Enrichment,6,10 am,12 pm,6ucpd8gf5mipf6g7gkhiqpvegc
+180,5/6/2023,12 pm - 2 pm,Sophomore Mentoring,"2024mentors, students2024",Sophomore Mentoring,7,12 pm,2 pm,dfheqdmn7pav6q90s94dvkq74s
+181,5/6/2023,12 pm - 2 pm,Junior Mentoring,"2023mentors, students2023",Junior Mentoring,8,12 pm,2 pm,vpgvimhkt95jce1mj9leuf0uf8
+182,5/6/2023,12 pm - 2 pm,Senior Mentoring,"2022mentors, students2022",Senior Mentoring,9,12 pm,2 pm,0u1g6oud74gh1es3be5k0t2rv4
+183,5/13/2023,10 am - 1 pm,ec,active,Graduation,1,10 am,1 pm,u4439ai6f83kg63gsf9ltq9iac
