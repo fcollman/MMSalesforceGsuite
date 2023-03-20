@@ -232,3 +232,49 @@ Prepare to deal with questions about logins and people losing login email or not
 TODOS
 -----
 See github issues...
+
+
+Benevity Salesforce Ingestion
+-----------------------------
+To make this work you need to setup a env.sh file in this repo directory with your salesforce credentials
+
+::
+
+    export SALESFORCE_PASSWORD=put_your_password_here
+    export SALESFORCE_EMAIL=yourlogin@atmindsmatterchapter.org
+
+You go to benevity and download a set of csv reports and place them in a directory.
+
+create a python environment with all the pre-reqs in requirements.txt installed plus jupyter hub or lab.
+
+launch a jupyter notebook server and open the benevity_salesforce_import_Mar2023.ipynb notebook
+
+This process is semi-automated and will require some interactive components.
+
+For example, you  need to set the security_token variable to a two factor authentication code and execute the login cell while it is still valid to get a session_id, this should be good for several hours to let you get your work done.
+
+Second, you need to specify the directory in 
+
+::
+
+    report_files = glob.glob('../DonationReports3/*.csv')
+
+to be the directory where you downloaded all the benevity csvs.
+
+You may encounter an error message as you execute the ingestion code that suggests that a company account cannot be found.  This might be because Salesforce does not have an account for that company, or it might be that it has an account, but it is just under a different name.  The dictionary salesforce_cleaning is meant to help you remap names as they appear in Benevity to the name of the account in Salesforce.  You can add to this dictionary to help you do the remapping.  You might also need to create a new "Account" in salesforce to represent the company so we can track the donations/matches that come from them.
+
+The script will try to match individuals based on First Name and Last Name, and then if nothing is found it will match on email.  If it matches on neither it will automatically create new accounts under the First Name,Last Names and emails which appear in the report.  It is of course possible that these people do in fact exist in Salesforce underneath a different name and email, and this will fracture their donations.  Adjusting their salesforce emails to match whatever email exists in Benevity is probably the easiest way to fix this data, but often it will be a work email which might be different that what you want in salesforce.
+
+Often the script will error out when a bunch of donations are done in short succession, particularly if they are hitting the same account, such as Anonymous.  Restarting the import cell shown below
+
+::
+
+    # a set of company renames that are necessary to map fields between Salesforce and Benevity systems.
+    for report_file in report_files[0:]:
+        print(report_file)
+        report_df = pd.read_csv(report_file, skiprows=11, skipfooter=4,thousands=',')
+        report_df['Company']=report_df.Company.replace(salesforce_cleaning)
+        process_report(report_df)
+
+As reports are fully processed, you can increment the zero number forward to avoid reprocessing files. Note it will check salesforce to make sure that rows that are processed are not processed a second time and show that has skipped them, so restarting from the beginning doesn't hurt anything but just takes longer. 
+
