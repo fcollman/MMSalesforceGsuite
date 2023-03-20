@@ -55,7 +55,8 @@ SALESFORCE_CONTACT_FORM_CONFIG = {
 };
 // Create Form object (to be prefilled with contact info)
 function create_update_contacts_form() {
-  // Creates the contact info update form. Returns Google form object
+  // Creates the contact info update form. If form exists, returns the 
+  // Script Property "contactUpdateFormId"
   // TODO: Add field descriptions and specify which ones are required
   var scriptProps = PropertiesService.getScriptProperties();
   var formID = scriptProps.getProperty('contactUpdateFormId');
@@ -334,6 +335,7 @@ function update_salesforce_contact_info() {
   var scriptProps = PropertiesService.getScriptProperties();
   var updateContactsForm = create_update_contacts_form()
 
+  // grab form responses
   var responseID = updateContactsForm.getDestinationId();
   var responsess = SpreadsheetApp.openById(responseID);
   var headers = createHeaderIfNotFound_('UpdateStatus', responsess);
@@ -350,7 +352,8 @@ function update_salesforce_contact_info() {
   }
   data = rangeData.getValues();
 
-
+  // iterate through responses; if UpdateStatus == Done, skip
+  // else push info to Salesforce
   for (i = 1; i < lastRow; i++) {
     status = data[i][columnDict['UpdateStatus']]
     if (status == "") {
@@ -387,6 +390,7 @@ function update_salesforce_contact_info() {
       }
       // TODO: update name, if name change add new name as alias 
       Logger.log(user)
+      // update contact info in GSuites
       AdminDirectory.Users.update(user_update, user.id);
       externalIDs = user.getExternalIds()
       var salesforceID = null;
@@ -405,16 +409,21 @@ function update_salesforce_contact_info() {
             'Employer__c': data[i][columnDict['Employer']],
             'Title': data[i][columnDict['Title']]
           }
-          postSalesforceContact(salesforceID, contactdata, sflogin)
-          sheet.getRange(i + 1, lastColumn).setValue("Done").clearFormat().setComment(new Date());;
+          // push contact info to Salesforce
+          try {
+            postSalesforceContact(salesforceID, contactdata, sflogin)
+            sheet.getRange(i + 1, lastColumn).setValue("Done").clearFormat().setComment(new Date());;
+          }
+          catch(err) {
+            err_msg = "Unable to push contact to Salesforce: " + data[i][columnDict['First Name']] + " " + data[i][columnDict['Last Name']] + " " + data[i][columnDict['Mobile']]
+            Logger.log(err_msg);
+          }
         }
       }
       if (salesforceID == null) {
         Logger.log('No salesforce ID for ' + email)
       }
-      //
-      //break;
-
+      
     }
   }
 
