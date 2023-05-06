@@ -414,7 +414,7 @@ function update_salesforce_contact_info() {
             postSalesforceContact(salesforceID, contactdata, sflogin)
             sheet.getRange(i + 1, lastColumn).setValue("Done").clearFormat().setComment(new Date());;
           }
-          catch(err) {
+          catch (err) {
             err_msg = "Unable to push contact to Salesforce: " + data[i][columnDict['First Name']] + " " + data[i][columnDict['Last Name']] + " " + data[i][columnDict['Mobile']]
             Logger.log(err_msg);
           }
@@ -423,13 +423,13 @@ function update_salesforce_contact_info() {
       if (salesforceID == null) {
         Logger.log('No salesforce ID for ' + email)
       }
-      
+
     }
   }
 
 }
 
-function send_mail_merge_emails(){
+function send_mail_merge_emails() {
   var mailmerge_sheetID = PropertiesService.getScriptProperties().getProperty('contactMailMergeSheetID');
   var draftID = PropertiesService.getScriptProperties().getProperty('AccountUpdateDraftID');
   var mailmerge_ss = SpreadsheetApp.openById(mailmerge_sheetID);

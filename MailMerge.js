@@ -3,27 +3,27 @@ function processRow(rowData, mergeData, emailcol) {
     var emailSubject = fillInTemplateFromObject(mergeData.subject, rowData);
     var plainTextBody = fillInTemplateFromObject(mergeData.plainText, rowData);
     mergeData['htmlBody'] = emailText;
-    if(rowData.cc != undefined) mergeData.cc = rowData.cc;
-    if(rowData.bcc != undefined) mergeData.bcc = rowData.bcc;
+    if (rowData.cc != undefined) mergeData.cc = rowData.cc;
+    if (rowData.bcc != undefined) mergeData.bcc = rowData.bcc;
     console.log(rowData)
     GmailApp.sendEmail(rowData[emailcol], emailSubject, plainTextBody, mergeData);
 }
 function getDraftId() {
-  var drafts=GmailApp.getDrafts();
-  for(var i=0;i<drafts.length;i++) {
-    console.log(drafts[i].getId());
-    console.log(drafts[i].getMessage().getSubject());
-  }
+    var drafts = GmailApp.getDrafts();
+    for (var i = 0; i < drafts.length; i++) {
+        console.log(drafts[i].getId());
+        console.log(drafts[i].getMessage().getSubject());
+    }
 }
 
-function run_mail_merge(ss, draftID, tocolumn){
+function run_mail_merge(ss, draftID, tocolumn) {
     var name = "Minds Matter"
     var domainname = PropertiesService.getScriptProperties().getProperty('domainname');
     var from = 'admin@' + domainname;
     var selectedDraft = GmailApp.getDraft(draftID)
     var selectedTemplate = selectedDraft.getMessage()
     var dataSheet = ss.getActiveSheet();
-    var headers = createHeaderIfNotFound_('Merge status',ss);
+    var headers = createHeaderIfNotFound_('Merge status', ss);
     var dataRange = dataSheet.getDataRange();
     //////////////////////////////////////////////////////////////////////////////
     // Get inline images and make sure they stay as inline images
@@ -40,7 +40,7 @@ function run_mail_merge(ss, draftID, tocolumn){
         var nbrOfImg = emailTemplate.match(regMessageId).length;
         var imgVars = emailTemplate.match(/<img[^>]+>/g);
         var imgToReplace = [];
-        if(imgVars != null){
+        if (imgVars != null) {
             for (var i = 0; i < imgVars.length; i++) {
                 if (imgVars[i].search(regMessageId) != -1) {
                     var id = imgVars[i].match(/realattid=([^&]+)&/);
@@ -70,7 +70,7 @@ function run_mail_merge(ss, draftID, tocolumn){
     var mergeData = {
         template: emailTemplate,
         subject: selectedTemplate.getSubject(),
-        plainText : selectedTemplate.getPlainBody(),
+        plainText: selectedTemplate.getPlainBody(),
         attachments: attachments,
         name: name,
         from: from,
@@ -85,7 +85,7 @@ function run_mail_merge(ss, draftID, tocolumn){
         var rowData = objects[i];
         if (rowData.mergeStatus == "") {
             try {
-                processRow(rowData, mergeData,tocolumn);
+                processRow(rowData, mergeData, tocolumn);
                 dataSheet.getRange(i + 2, headers.indexOf('Merge status') + 1).setValue("Done").clearFormat().setComment(new Date());
             }
             catch (e) {
