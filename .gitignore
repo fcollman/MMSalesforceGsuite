@@ -5,3 +5,4 @@ DonationReports/
 env.sh
 python_scripts/credentials.json
 python_scripts/token.pickle
+.env
