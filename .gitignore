@@ -6,3 +6,4 @@ env.sh
 python_scripts/credentials.json
 python_scripts/token.pickle
 Pipfile.lock
+.env
