@@ -15,7 +15,7 @@ SCOPES = [
 ]
 
 CALENDER_ID = "c_822m07aktpjne3gfbr7cj8gjks@group.calendar.google.com"
-RANGE_TO_READ = "Computer_Readable!A1:G"
+RANGE_TO_READ = "Computer_Readable!A1:I"
 TOKEN_FILE = "token.pickle"
 CREDS_FILE = "credentials.json"
 
